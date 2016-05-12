@@ -1,0 +1,703 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4325AE361CE48CFD009866D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE351CE48CFD009866D9 /* main.m */; };
+		4325AE391CE48CFD009866D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE381CE48CFD009866D9 /* AppDelegate.m */; };
+		4325AE3C1CE48CFD009866D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE3B1CE48CFD009866D9 /* ViewController.m */; };
+		4325AE3F1CE48CFD009866D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE3D1CE48CFD009866D9 /* Main.storyboard */; };
+		4325AE411CE48CFD009866D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE401CE48CFD009866D9 /* Assets.xcassets */; };
+		4325AE441CE48CFD009866D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE421CE48CFD009866D9 /* LaunchScreen.storyboard */; };
+		4325AE4F1CE48CFD009866D9 /* WKPhotoPickerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE4E1CE48CFD009866D9 /* WKPhotoPickerDemoTests.m */; };
+		4325AE5A1CE48CFE009866D9 /* WKPhotoPickerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE591CE48CFE009866D9 /* WKPhotoPickerDemoUITests.m */; };
+		4325AE7C1CE4925A009866D9 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE691CE4925A009866D9 /* UIViewExt.m */; };
+		4325AE7D1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE6C1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m */; };
+		4325AE7E1CE4925A009866D9 /* WKCaptureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE6F1CE4925A009866D9 /* WKCaptureImageView.m */; };
+		4325AE7F1CE4925A009866D9 /* WKCaptureImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE701CE4925A009866D9 /* WKCaptureImageView.xib */; };
+		4325AE801CE4925A009866D9 /* WKImageSelectedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE721CE4925A009866D9 /* WKImageSelectedScrollView.m */; };
+		4325AE811CE4925A009866D9 /* WKNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE741CE4925A009866D9 /* WKNavView.m */; };
+		4325AE821CE4925A009866D9 /* WKNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE751CE4925A009866D9 /* WKNavView.xib */; };
+		4325AE831CE4925A009866D9 /* WKSelectImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE771CE4925A009866D9 /* WKSelectImageView.m */; };
+		4325AE841CE4925A009866D9 /* WKSelectImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE781CE4925A009866D9 /* WKSelectImageView.xib */; };
+		4325AE851CE4925A009866D9 /* WKWatermarkCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE7A1CE4925A009866D9 /* WKWatermarkCameraView.m */; };
+		4325AE861CE4925A009866D9 /* WKWatermarkCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE7B1CE4925A009866D9 /* WKWatermarkCameraView.xib */; };
+		4325AE941CE493C8009866D9 /* iconfont-xiangjifanzhuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE881CE493C8009866D9 /* iconfont-xiangjifanzhuan@2x.png */; };
+		4325AE951CE493C8009866D9 /* iconfont-xiangjifanzhuan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE891CE493C8009866D9 /* iconfont-xiangjifanzhuan@3x.png */; };
+		4325AE961CE493C8009866D9 /* 删除@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE8A1CE493C8009866D9 /* 删除@2x.png */; };
+		4325AE971CE493C8009866D9 /* 删除@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE8B1CE493C8009866D9 /* 删除@3x.png */; };
+		4325AE981CE493C8009866D9 /* 拍照按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE8C1CE493C8009866D9 /* 拍照按钮@2x.png */; };
+		4325AE991CE493C8009866D9 /* 拍照按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE8D1CE493C8009866D9 /* 拍照按钮@3x.png */; };
+		4325AE9A1CE493C8009866D9 /* 确认@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE8E1CE493C8009866D9 /* 确认@2x.png */; };
+		4325AE9B1CE493C8009866D9 /* 确认@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE8F1CE493C8009866D9 /* 确认@3x.png */; };
+		4325AE9C1CE493C8009866D9 /* 闪光灯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE901CE493C8009866D9 /* 闪光灯@2x.png */; };
+		4325AE9D1CE493C8009866D9 /* 闪光灯@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE911CE493C8009866D9 /* 闪光灯@3x.png */; };
+		4325AE9E1CE493C8009866D9 /* 闪光灯关闭@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE921CE493C8009866D9 /* 闪光灯关闭@2x.png */; };
+		4325AE9F1CE493C8009866D9 /* 闪光灯关闭@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE931CE493C8009866D9 /* 闪光灯关闭@3x.png */; };
+		4325AEA41CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AEA01CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@2x.png */; };
+		4325AEA51CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AEA11CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@3x.png */; };
+		4325AEA61CE4943A009866D9 /* tab-动态发布-添加图片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AEA21CE4943A009866D9 /* tab-动态发布-添加图片@2x.png */; };
+		4325AEA71CE4943A009866D9 /* tab-动态发布-添加图片@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4325AEA31CE4943A009866D9 /* tab-动态发布-添加图片@3x.png */; };
+		4325AEAB1CE494BE009866D9 /* WKCameroCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AEA91CE494BE009866D9 /* WKCameroCell.m */; };
+		4325AEAC1CE494BE009866D9 /* WKCameroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4325AEAA1CE494BE009866D9 /* WKCameroCell.xib */; };
+		4325AEB01CE49657009866D9 /* WKSBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AEAF1CE49657009866D9 /* WKSBManager.m */; };
+		4325AEB41CE4977F009866D9 /* WKPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AEB21CE4977F009866D9 /* WKPhotoCollectionViewCell.m */; };
+		4325AEB51CE4977F009866D9 /* WKPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4325AEB31CE4977F009866D9 /* WKPhotoCollectionViewCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4325AE4B1CE48CFD009866D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4325AE291CE48CFD009866D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4325AE301CE48CFD009866D9;
+			remoteInfo = WKPhotoPickerDemo;
+		};
+		4325AE561CE48CFE009866D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4325AE291CE48CFD009866D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4325AE301CE48CFD009866D9;
+			remoteInfo = WKPhotoPickerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4325AE311CE48CFD009866D9 /* WKPhotoPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKPhotoPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4325AE351CE48CFD009866D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4325AE371CE48CFD009866D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4325AE381CE48CFD009866D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4325AE3A1CE48CFD009866D9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4325AE3B1CE48CFD009866D9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4325AE3E1CE48CFD009866D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4325AE401CE48CFD009866D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4325AE431CE48CFD009866D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4325AE451CE48CFD009866D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4325AE4A1CE48CFD009866D9 /* WKPhotoPickerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKPhotoPickerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4325AE4E1CE48CFD009866D9 /* WKPhotoPickerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKPhotoPickerDemoTests.m; sourceTree = "<group>"; };
+		4325AE501CE48CFD009866D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4325AE551CE48CFE009866D9 /* WKPhotoPickerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKPhotoPickerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4325AE591CE48CFE009866D9 /* WKPhotoPickerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKPhotoPickerDemoUITests.m; sourceTree = "<group>"; };
+		4325AE5B1CE48CFE009866D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4325AE681CE4925A009866D9 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		4325AE691CE4925A009866D9 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		4325AE6B1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTDynamicPhotoPickerViewController.h; sourceTree = "<group>"; };
+		4325AE6C1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTDynamicPhotoPickerViewController.m; sourceTree = "<group>"; };
+		4325AE6E1CE4925A009866D9 /* WKCaptureImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCaptureImageView.h; sourceTree = "<group>"; };
+		4325AE6F1CE4925A009866D9 /* WKCaptureImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCaptureImageView.m; sourceTree = "<group>"; };
+		4325AE701CE4925A009866D9 /* WKCaptureImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCaptureImageView.xib; sourceTree = "<group>"; };
+		4325AE711CE4925A009866D9 /* WKImageSelectedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKImageSelectedScrollView.h; sourceTree = "<group>"; };
+		4325AE721CE4925A009866D9 /* WKImageSelectedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKImageSelectedScrollView.m; sourceTree = "<group>"; };
+		4325AE731CE4925A009866D9 /* WKNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKNavView.h; sourceTree = "<group>"; };
+		4325AE741CE4925A009866D9 /* WKNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKNavView.m; sourceTree = "<group>"; };
+		4325AE751CE4925A009866D9 /* WKNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKNavView.xib; sourceTree = "<group>"; };
+		4325AE761CE4925A009866D9 /* WKSelectImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSelectImageView.h; sourceTree = "<group>"; };
+		4325AE771CE4925A009866D9 /* WKSelectImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSelectImageView.m; sourceTree = "<group>"; };
+		4325AE781CE4925A009866D9 /* WKSelectImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKSelectImageView.xib; sourceTree = "<group>"; };
+		4325AE791CE4925A009866D9 /* WKWatermarkCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWatermarkCameraView.h; sourceTree = "<group>"; };
+		4325AE7A1CE4925A009866D9 /* WKWatermarkCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWatermarkCameraView.m; sourceTree = "<group>"; };
+		4325AE7B1CE4925A009866D9 /* WKWatermarkCameraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKWatermarkCameraView.xib; sourceTree = "<group>"; };
+		4325AE881CE493C8009866D9 /* iconfont-xiangjifanzhuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-xiangjifanzhuan@2x.png"; sourceTree = "<group>"; };
+		4325AE891CE493C8009866D9 /* iconfont-xiangjifanzhuan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-xiangjifanzhuan@3x.png"; sourceTree = "<group>"; };
+		4325AE8A1CE493C8009866D9 /* 删除@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "删除@2x.png"; sourceTree = "<group>"; };
+		4325AE8B1CE493C8009866D9 /* 删除@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "删除@3x.png"; sourceTree = "<group>"; };
+		4325AE8C1CE493C8009866D9 /* 拍照按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拍照按钮@2x.png"; sourceTree = "<group>"; };
+		4325AE8D1CE493C8009866D9 /* 拍照按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拍照按钮@3x.png"; sourceTree = "<group>"; };
+		4325AE8E1CE493C8009866D9 /* 确认@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确认@2x.png"; sourceTree = "<group>"; };
+		4325AE8F1CE493C8009866D9 /* 确认@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确认@3x.png"; sourceTree = "<group>"; };
+		4325AE901CE493C8009866D9 /* 闪光灯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "闪光灯@2x.png"; sourceTree = "<group>"; };
+		4325AE911CE493C8009866D9 /* 闪光灯@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "闪光灯@3x.png"; sourceTree = "<group>"; };
+		4325AE921CE493C8009866D9 /* 闪光灯关闭@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "闪光灯关闭@2x.png"; sourceTree = "<group>"; };
+		4325AE931CE493C8009866D9 /* 闪光灯关闭@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "闪光灯关闭@3x.png"; sourceTree = "<group>"; };
+		4325AEA01CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "完成跑步-RuningBang·奔跑帮@2x.png"; sourceTree = "<group>"; };
+		4325AEA11CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "完成跑步-RuningBang·奔跑帮@3x.png"; sourceTree = "<group>"; };
+		4325AEA21CE4943A009866D9 /* tab-动态发布-添加图片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-动态发布-添加图片@2x.png"; sourceTree = "<group>"; };
+		4325AEA31CE4943A009866D9 /* tab-动态发布-添加图片@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-动态发布-添加图片@3x.png"; sourceTree = "<group>"; };
+		4325AEA81CE494BE009866D9 /* WKCameroCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCameroCell.h; sourceTree = "<group>"; };
+		4325AEA91CE494BE009866D9 /* WKCameroCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCameroCell.m; sourceTree = "<group>"; };
+		4325AEAA1CE494BE009866D9 /* WKCameroCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCameroCell.xib; sourceTree = "<group>"; };
+		4325AEAD1CE4950C009866D9 /* WKPchHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKPchHeader.pch; sourceTree = "<group>"; };
+		4325AEAE1CE49657009866D9 /* WKSBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSBManager.h; sourceTree = "<group>"; };
+		4325AEAF1CE49657009866D9 /* WKSBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSBManager.m; sourceTree = "<group>"; };
+		4325AEB11CE4977F009866D9 /* WKPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		4325AEB21CE4977F009866D9 /* WKPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		4325AEB31CE4977F009866D9 /* WKPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4325AE2E1CE48CFD009866D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4325AE471CE48CFD009866D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4325AE521CE48CFD009866D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4325AE281CE48CFD009866D9 = {
+			isa = PBXGroup;
+			children = (
+				4325AE331CE48CFD009866D9 /* WKPhotoPickerDemo */,
+				4325AE4D1CE48CFD009866D9 /* WKPhotoPickerDemoTests */,
+				4325AE581CE48CFE009866D9 /* WKPhotoPickerDemoUITests */,
+				4325AE321CE48CFD009866D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4325AE321CE48CFD009866D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4325AE311CE48CFD009866D9 /* WKPhotoPickerDemo.app */,
+				4325AE4A1CE48CFD009866D9 /* WKPhotoPickerDemoTests.xctest */,
+				4325AE551CE48CFE009866D9 /* WKPhotoPickerDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4325AE331CE48CFD009866D9 /* WKPhotoPickerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				4325AE871CE493C8009866D9 /* image */,
+				4325AE671CE4925A009866D9 /* Tools */,
+				4325AE6A1CE4925A009866D9 /* VC */,
+				4325AE6D1CE4925A009866D9 /* View */,
+				4325AE371CE48CFD009866D9 /* AppDelegate.h */,
+				4325AE381CE48CFD009866D9 /* AppDelegate.m */,
+				4325AE3A1CE48CFD009866D9 /* ViewController.h */,
+				4325AE3B1CE48CFD009866D9 /* ViewController.m */,
+				4325AE3D1CE48CFD009866D9 /* Main.storyboard */,
+				4325AE401CE48CFD009866D9 /* Assets.xcassets */,
+				4325AE421CE48CFD009866D9 /* LaunchScreen.storyboard */,
+				4325AE451CE48CFD009866D9 /* Info.plist */,
+				4325AE341CE48CFD009866D9 /* Supporting Files */,
+				4325AEAD1CE4950C009866D9 /* WKPchHeader.pch */,
+			);
+			path = WKPhotoPickerDemo;
+			sourceTree = "<group>";
+		};
+		4325AE341CE48CFD009866D9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4325AE351CE48CFD009866D9 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4325AE4D1CE48CFD009866D9 /* WKPhotoPickerDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				4325AE4E1CE48CFD009866D9 /* WKPhotoPickerDemoTests.m */,
+				4325AE501CE48CFD009866D9 /* Info.plist */,
+			);
+			path = WKPhotoPickerDemoTests;
+			sourceTree = "<group>";
+		};
+		4325AE581CE48CFE009866D9 /* WKPhotoPickerDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4325AE591CE48CFE009866D9 /* WKPhotoPickerDemoUITests.m */,
+				4325AE5B1CE48CFE009866D9 /* Info.plist */,
+			);
+			path = WKPhotoPickerDemoUITests;
+			sourceTree = "<group>";
+		};
+		4325AE671CE4925A009866D9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				4325AEAE1CE49657009866D9 /* WKSBManager.h */,
+				4325AEAF1CE49657009866D9 /* WKSBManager.m */,
+				4325AE681CE4925A009866D9 /* UIViewExt.h */,
+				4325AE691CE4925A009866D9 /* UIViewExt.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		4325AE6A1CE4925A009866D9 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				4325AE6B1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.h */,
+				4325AE6C1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		4325AE6D1CE4925A009866D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4325AEB11CE4977F009866D9 /* WKPhotoCollectionViewCell.h */,
+				4325AEB21CE4977F009866D9 /* WKPhotoCollectionViewCell.m */,
+				4325AEB31CE4977F009866D9 /* WKPhotoCollectionViewCell.xib */,
+				4325AEA81CE494BE009866D9 /* WKCameroCell.h */,
+				4325AEA91CE494BE009866D9 /* WKCameroCell.m */,
+				4325AEAA1CE494BE009866D9 /* WKCameroCell.xib */,
+				4325AE6E1CE4925A009866D9 /* WKCaptureImageView.h */,
+				4325AE6F1CE4925A009866D9 /* WKCaptureImageView.m */,
+				4325AE701CE4925A009866D9 /* WKCaptureImageView.xib */,
+				4325AE711CE4925A009866D9 /* WKImageSelectedScrollView.h */,
+				4325AE721CE4925A009866D9 /* WKImageSelectedScrollView.m */,
+				4325AE731CE4925A009866D9 /* WKNavView.h */,
+				4325AE741CE4925A009866D9 /* WKNavView.m */,
+				4325AE751CE4925A009866D9 /* WKNavView.xib */,
+				4325AE761CE4925A009866D9 /* WKSelectImageView.h */,
+				4325AE771CE4925A009866D9 /* WKSelectImageView.m */,
+				4325AE781CE4925A009866D9 /* WKSelectImageView.xib */,
+				4325AE791CE4925A009866D9 /* WKWatermarkCameraView.h */,
+				4325AE7A1CE4925A009866D9 /* WKWatermarkCameraView.m */,
+				4325AE7B1CE4925A009866D9 /* WKWatermarkCameraView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4325AE871CE493C8009866D9 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				4325AEA01CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@2x.png */,
+				4325AEA11CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@3x.png */,
+				4325AEA21CE4943A009866D9 /* tab-动态发布-添加图片@2x.png */,
+				4325AEA31CE4943A009866D9 /* tab-动态发布-添加图片@3x.png */,
+				4325AE881CE493C8009866D9 /* iconfont-xiangjifanzhuan@2x.png */,
+				4325AE891CE493C8009866D9 /* iconfont-xiangjifanzhuan@3x.png */,
+				4325AE8A1CE493C8009866D9 /* 删除@2x.png */,
+				4325AE8B1CE493C8009866D9 /* 删除@3x.png */,
+				4325AE8C1CE493C8009866D9 /* 拍照按钮@2x.png */,
+				4325AE8D1CE493C8009866D9 /* 拍照按钮@3x.png */,
+				4325AE8E1CE493C8009866D9 /* 确认@2x.png */,
+				4325AE8F1CE493C8009866D9 /* 确认@3x.png */,
+				4325AE901CE493C8009866D9 /* 闪光灯@2x.png */,
+				4325AE911CE493C8009866D9 /* 闪光灯@3x.png */,
+				4325AE921CE493C8009866D9 /* 闪光灯关闭@2x.png */,
+				4325AE931CE493C8009866D9 /* 闪光灯关闭@3x.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4325AE301CE48CFD009866D9 /* WKPhotoPickerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4325AE5E1CE48CFE009866D9 /* Build configuration list for PBXNativeTarget "WKPhotoPickerDemo" */;
+			buildPhases = (
+				4325AE2D1CE48CFD009866D9 /* Sources */,
+				4325AE2E1CE48CFD009866D9 /* Frameworks */,
+				4325AE2F1CE48CFD009866D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WKPhotoPickerDemo;
+			productName = WKPhotoPickerDemo;
+			productReference = 4325AE311CE48CFD009866D9 /* WKPhotoPickerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4325AE491CE48CFD009866D9 /* WKPhotoPickerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4325AE611CE48CFE009866D9 /* Build configuration list for PBXNativeTarget "WKPhotoPickerDemoTests" */;
+			buildPhases = (
+				4325AE461CE48CFD009866D9 /* Sources */,
+				4325AE471CE48CFD009866D9 /* Frameworks */,
+				4325AE481CE48CFD009866D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4325AE4C1CE48CFD009866D9 /* PBXTargetDependency */,
+			);
+			name = WKPhotoPickerDemoTests;
+			productName = WKPhotoPickerDemoTests;
+			productReference = 4325AE4A1CE48CFD009866D9 /* WKPhotoPickerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4325AE541CE48CFD009866D9 /* WKPhotoPickerDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4325AE641CE48CFE009866D9 /* Build configuration list for PBXNativeTarget "WKPhotoPickerDemoUITests" */;
+			buildPhases = (
+				4325AE511CE48CFD009866D9 /* Sources */,
+				4325AE521CE48CFD009866D9 /* Frameworks */,
+				4325AE531CE48CFD009866D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4325AE571CE48CFE009866D9 /* PBXTargetDependency */,
+			);
+			name = WKPhotoPickerDemoUITests;
+			productName = WKPhotoPickerDemoUITests;
+			productReference = 4325AE551CE48CFE009866D9 /* WKPhotoPickerDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4325AE291CE48CFD009866D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = WangKunKun;
+				TargetAttributes = {
+					4325AE301CE48CFD009866D9 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					4325AE491CE48CFD009866D9 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 4325AE301CE48CFD009866D9;
+					};
+					4325AE541CE48CFD009866D9 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 4325AE301CE48CFD009866D9;
+					};
+				};
+			};
+			buildConfigurationList = 4325AE2C1CE48CFD009866D9 /* Build configuration list for PBXProject "WKPhotoPickerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4325AE281CE48CFD009866D9;
+			productRefGroup = 4325AE321CE48CFD009866D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4325AE301CE48CFD009866D9 /* WKPhotoPickerDemo */,
+				4325AE491CE48CFD009866D9 /* WKPhotoPickerDemoTests */,
+				4325AE541CE48CFD009866D9 /* WKPhotoPickerDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4325AE2F1CE48CFD009866D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4325AE9A1CE493C8009866D9 /* 确认@2x.png in Resources */,
+				4325AE951CE493C8009866D9 /* iconfont-xiangjifanzhuan@3x.png in Resources */,
+				4325AE441CE48CFD009866D9 /* LaunchScreen.storyboard in Resources */,
+				4325AE411CE48CFD009866D9 /* Assets.xcassets in Resources */,
+				4325AE981CE493C8009866D9 /* 拍照按钮@2x.png in Resources */,
+				4325AE9E1CE493C8009866D9 /* 闪光灯关闭@2x.png in Resources */,
+				4325AE991CE493C8009866D9 /* 拍照按钮@3x.png in Resources */,
+				4325AEA71CE4943A009866D9 /* tab-动态发布-添加图片@3x.png in Resources */,
+				4325AE9B1CE493C8009866D9 /* 确认@3x.png in Resources */,
+				4325AE841CE4925A009866D9 /* WKSelectImageView.xib in Resources */,
+				4325AEAC1CE494BE009866D9 /* WKCameroCell.xib in Resources */,
+				4325AE9D1CE493C8009866D9 /* 闪光灯@3x.png in Resources */,
+				4325AE9F1CE493C8009866D9 /* 闪光灯关闭@3x.png in Resources */,
+				4325AEA41CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@2x.png in Resources */,
+				4325AE961CE493C8009866D9 /* 删除@2x.png in Resources */,
+				4325AE9C1CE493C8009866D9 /* 闪光灯@2x.png in Resources */,
+				4325AE3F1CE48CFD009866D9 /* Main.storyboard in Resources */,
+				4325AE861CE4925A009866D9 /* WKWatermarkCameraView.xib in Resources */,
+				4325AE821CE4925A009866D9 /* WKNavView.xib in Resources */,
+				4325AE941CE493C8009866D9 /* iconfont-xiangjifanzhuan@2x.png in Resources */,
+				4325AEA51CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@3x.png in Resources */,
+				4325AE7F1CE4925A009866D9 /* WKCaptureImageView.xib in Resources */,
+				4325AE971CE493C8009866D9 /* 删除@3x.png in Resources */,
+				4325AEB51CE4977F009866D9 /* WKPhotoCollectionViewCell.xib in Resources */,
+				4325AEA61CE4943A009866D9 /* tab-动态发布-添加图片@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4325AE481CE48CFD009866D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4325AE531CE48CFD009866D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4325AE2D1CE48CFD009866D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4325AE811CE4925A009866D9 /* WKNavView.m in Sources */,
+				4325AE7C1CE4925A009866D9 /* UIViewExt.m in Sources */,
+				4325AE831CE4925A009866D9 /* WKSelectImageView.m in Sources */,
+				4325AEAB1CE494BE009866D9 /* WKCameroCell.m in Sources */,
+				4325AE801CE4925A009866D9 /* WKImageSelectedScrollView.m in Sources */,
+				4325AE7E1CE4925A009866D9 /* WKCaptureImageView.m in Sources */,
+				4325AEB01CE49657009866D9 /* WKSBManager.m in Sources */,
+				4325AE7D1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m in Sources */,
+				4325AE851CE4925A009866D9 /* WKWatermarkCameraView.m in Sources */,
+				4325AE3C1CE48CFD009866D9 /* ViewController.m in Sources */,
+				4325AE391CE48CFD009866D9 /* AppDelegate.m in Sources */,
+				4325AEB41CE4977F009866D9 /* WKPhotoCollectionViewCell.m in Sources */,
+				4325AE361CE48CFD009866D9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4325AE461CE48CFD009866D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4325AE4F1CE48CFD009866D9 /* WKPhotoPickerDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4325AE511CE48CFD009866D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4325AE5A1CE48CFE009866D9 /* WKPhotoPickerDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4325AE4C1CE48CFD009866D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4325AE301CE48CFD009866D9 /* WKPhotoPickerDemo */;
+			targetProxy = 4325AE4B1CE48CFD009866D9 /* PBXContainerItemProxy */;
+		};
+		4325AE571CE48CFE009866D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4325AE301CE48CFD009866D9 /* WKPhotoPickerDemo */;
+			targetProxy = 4325AE561CE48CFE009866D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4325AE3D1CE48CFD009866D9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4325AE3E1CE48CFD009866D9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4325AE421CE48CFD009866D9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4325AE431CE48CFD009866D9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4325AE5C1CE48CFE009866D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4325AE5D1CE48CFE009866D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4325AE5F1CE48CFE009866D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = WKPhotoPickerDemo/WKPchHeader.pch;
+				INFOPLIST_FILE = WKPhotoPickerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WangKunKun.WKPhotoPickerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4325AE601CE48CFE009866D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = WKPhotoPickerDemo/WKPchHeader.pch;
+				INFOPLIST_FILE = WKPhotoPickerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WangKunKun.WKPhotoPickerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4325AE621CE48CFE009866D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WKPhotoPickerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WangKunKun.WKPhotoPickerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WKPhotoPickerDemo.app/WKPhotoPickerDemo";
+			};
+			name = Debug;
+		};
+		4325AE631CE48CFE009866D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WKPhotoPickerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WangKunKun.WKPhotoPickerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WKPhotoPickerDemo.app/WKPhotoPickerDemo";
+			};
+			name = Release;
+		};
+		4325AE651CE48CFE009866D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WKPhotoPickerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WangKunKun.WKPhotoPickerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = WKPhotoPickerDemo;
+			};
+			name = Debug;
+		};
+		4325AE661CE48CFE009866D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WKPhotoPickerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WangKunKun.WKPhotoPickerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = WKPhotoPickerDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4325AE2C1CE48CFD009866D9 /* Build configuration list for PBXProject "WKPhotoPickerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4325AE5C1CE48CFE009866D9 /* Debug */,
+				4325AE5D1CE48CFE009866D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4325AE5E1CE48CFE009866D9 /* Build configuration list for PBXNativeTarget "WKPhotoPickerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4325AE5F1CE48CFE009866D9 /* Debug */,
+				4325AE601CE48CFE009866D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4325AE611CE48CFE009866D9 /* Build configuration list for PBXNativeTarget "WKPhotoPickerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4325AE621CE48CFE009866D9 /* Debug */,
+				4325AE631CE48CFE009866D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4325AE641CE48CFE009866D9 /* Build configuration list for PBXNativeTarget "WKPhotoPickerDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4325AE651CE48CFE009866D9 /* Debug */,
+				4325AE661CE48CFE009866D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4325AE291CE48CFD009866D9 /* Project object */;
+}

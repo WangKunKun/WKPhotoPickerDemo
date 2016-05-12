@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WKSelectImageView">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="116"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W45-go-viW">
+                    <rect key="frame" x="0.0" y="6" width="104" height="104"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="104" id="30b-Ry-rCO"/>
+                        <constraint firstAttribute="height" constant="104" id="MOb-Jw-Aaa"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="tab-动态发布-添加图片.png"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="MOb-Jw-Aaa"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="imageBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="mXp-96-JgY"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96d-77-KtB">
+                    <rect key="frame" x="94" y="0.0" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="2tW-gp-r0e"/>
+                        <constraint firstAttribute="height" constant="16" id="czZ-oe-FlR"/>
+                    </constraints>
+                    <state key="normal" image="删除.png"/>
+                    <connections>
+                        <action selector="deleteBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="RpQ-7C-7j6"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="W45-go-viW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EaW-Wf-WqC"/>
+                <constraint firstItem="W45-go-viW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="JXN-DR-SFt"/>
+                <constraint firstItem="96d-77-KtB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KPU-SV-fd9"/>
+                <constraint firstAttribute="trailing" secondItem="96d-77-KtB" secondAttribute="trailing" id="Qud-1E-dLO"/>
+                <constraint firstAttribute="bottom" secondItem="W45-go-viW" secondAttribute="bottom" constant="6" id="Xth-im-OPZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="deleteBtn" destination="96d-77-KtB" id="kk4-v5-s4a"/>
+                <outlet property="imageBtn" destination="W45-go-viW" id="VfR-3K-EQO"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="tab-动态发布-添加图片.png" width="104" height="104"/>
+        <image name="删除.png" width="16" height="16"/>
+    </resources>
+</document>

@@ -1,0 +1,25 @@
+//
+//  WKPchHeader.pch
+//  WKPhotoPickerDemo
+//
+//  Created by qitian on 16/5/12.
+//  Copyright © 2016年 WangKunKun. All rights reserved.
+//
+
+#ifndef WKPchHeader_pch
+#define WKPchHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//宽高
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+//缩放比例
+#define WIDTH_SCALE ( [[UIScreen mainScreen] bounds].size.width / 375.0 )
+#define HEIGHT_SCALE ( [[UIScreen mainScreen] bounds].size.height / 667.0 )
+
+#define GET_IMAGE(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:NAME]]
+
+#import "UIViewExt.h"
+
+#endif /* WKPchHeader_pch */
