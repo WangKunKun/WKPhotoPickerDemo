@@ -38,7 +38,7 @@
 
 - (void)awakeFromNib
 {
-//    self.widthS = SCREEN_WIDTH;
+    self.widthS = SCREEN_WIDTH;
     [self layoutIfNeeded];
 }
 

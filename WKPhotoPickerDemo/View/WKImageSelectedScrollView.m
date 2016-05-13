@@ -7,7 +7,7 @@
 //
 
 #import "WKImageSelectedScrollView.h"
-#import "QTDynamicPhotoPickerViewController.h"
+#import "WKPhotoPickerViewController.h"
 #import "WKSBManager.h"
 
 #define SCROLLVIEWWIDTH SCREEN_WIDTH
@@ -37,7 +37,6 @@
         self.frame = frame;
         _btnArr = [NSMutableArray array];
         [self setInterFace];
-//        [self initPhotoBrowser];
         
     }
     return self;
@@ -72,9 +71,9 @@
     for (UIImage * temp in _images) {
         WKSelectImageView * selectImageView = [WKSelectImageView viewFromNIB];
         selectImageView.presentImage = temp;
-//        selectImageView.originS = CGPointMake(startX, startY);
+        selectImageView.originS = CGPointMake(startX, startY);
         [self addSubview:selectImageView];
-//        startX += selectImageView.widthS + space;
+        startX += selectImageView.widthS + space;
         [_btnArr addObject:selectImageView];
         selectImageView.wkDelegate = self;
         selectImageView.tag = BtnStartTag + i;
@@ -85,33 +84,50 @@
     }
   
     BOOL animationFlag = i == 0 ;
-//    CGFloat newStartX = animationFlag ? startX + SCREEN_WIDTH : startX;
+    CGFloat newStartX = animationFlag ? startX + SCREEN_WIDTH : startX;
     //添加最后的
     if (i < _imagesMaxCount) {
         
         
         
         WKSelectImageView * selectImageView = [WKSelectImageView viewFromNIB];
-//        selectImageView.originS =CGPointMake(newStartX, startY);
+        selectImageView.originS =CGPointMake(newStartX, startY);
         [self addSubview:selectImageView];
-//        newStartX += selectImageView.widthS + space;
+        newStartX += selectImageView.widthS + space;
         selectImageView.tag = BtnStartTag + i;
         selectImageView.wkDelegate = self;
         [_btnArr addObject:selectImageView];
         
+        if (animationFlag) {
+            [UIView animateWithDuration:0.3 animations:^{
+                selectImageView.originS = CGPointMake(startX, startY);
+            }];
+        }
         
-
-        
+        if (i == 0) {
+            newStartX -= SCREEN_WIDTH;
+        }
     }
 
-//    self.contentSize = CGSizeMake(newStartX, self.heightS);
+    self.contentSize = CGSizeMake(newStartX, self.heightS);
     //执行动画
     
 }
 
 - (void)selectImageView:(WKSelectImageView *)sender style:(WKSelectImageViewBtnClickStyle)style
 {
+
     switch (style) {
+        case WKSelectImageViewBtnClick_Add:
+        {
+            
+        }
+            break;
+        case WKSelectImageViewBtnClick_Look:
+        {
+            
+        }
+            break;
         case WKSelectImageViewBtnClick_Delete:
             
             //移除
@@ -119,20 +135,10 @@
             self.images = [_imagesM copy];
             
             break;
-        
-            
-        default:
-            break;
     }
     
-    if (_wkVCDelegate && [_wkVCDelegate respondsToSelector:@selector(wkScrollView:DidClickAtIndex:clickStyle:)])
-    {
-        [_wkVCDelegate wkScrollView:self DidClickAtIndex:sender.tag - BtnStartTag clickStyle:style];
-        
-        [self gotoOtherVCWithStyle:style index:sender.tag - BtnStartTag];
-        
-    }
-    else if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(wkScrollView:DidClickAtIndex:clickStyle:)])
+    
+    if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(wkScrollView:DidClickAtIndex:clickStyle:)])
     {
         [_wkDelegate wkScrollView:self DidClickAtIndex:sender.tag - BtnStartTag clickStyle:style];
     }
@@ -141,45 +147,7 @@
 }
 
 
-- (void)gotoOtherVCWithStyle:(WKSelectImageViewBtnClickStyle)style index:(NSUInteger)tag
-{
-//    if ([_wkVCDelegate isMemberOfClass:[UIViewController class]]) {
-    
-    
-        UIViewController * vc = nil;
-        switch (style) {
-            case WKSelectImageViewBtnClick_Add:
-            {
-                QTDynamicPhotoPickerViewController * controller=(QTDynamicPhotoPickerViewController*)[WKSBManager getVCWithSBName:@"Nearby" vcID:@"qtdynamicphotopicker"];
-                controller.selectedImagesArr = [_selectImages mutableCopy];
-                controller.maxImageCount = 9;
-                NSLog(@"%@",_selectImages);
-                vc = controller;
-            }
-                break;
-            case WKSelectImageViewBtnClick_Look:
-            {
 
-            }
-                break;
-                
-            default:
-                break;
-        }
-        
-        if (vc == nil) {
-            return;
-        }
-        
-        if (_wkVCDelegate.navigationController) {
-            [_wkVCDelegate.navigationController pushViewController:vc animated:YES];
-        }
-        else
-        {
-            [_wkVCDelegate presentViewController:vc animated:YES completion:nil];
-        }
-//    }
-}
 
 
 

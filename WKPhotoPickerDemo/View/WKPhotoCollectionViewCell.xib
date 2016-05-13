@@ -13,8 +13,15 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-动态-照片器-拍照" translatesAutoresizingMaskIntoConstraints="NO" id="2Ym-kq-7cC">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="拍照.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Ym-kq-7cC">
                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="选取.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSx-wT-ijG">
+                        <rect key="frame" x="58" y="8" width="19" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="M5a-2G-8in"/>
+                            <constraint firstAttribute="height" constant="19" id="mDz-7q-WgE"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -22,13 +29,20 @@
             <constraints>
                 <constraint firstItem="2Ym-kq-7cC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5hd-IY-VNS"/>
                 <constraint firstAttribute="bottom" secondItem="2Ym-kq-7cC" secondAttribute="bottom" id="62g-BB-F99"/>
+                <constraint firstItem="QSx-wT-ijG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Gua-Wr-q64"/>
+                <constraint firstAttribute="trailing" secondItem="QSx-wT-ijG" secondAttribute="trailing" constant="8" id="IE7-OU-Qpj"/>
                 <constraint firstItem="2Ym-kq-7cC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="po9-Qo-bd8"/>
                 <constraint firstAttribute="trailing" secondItem="2Ym-kq-7cC" secondAttribute="trailing" id="tcT-Ks-BY5"/>
             </constraints>
+            <connections>
+                <outlet property="IV" destination="2Ym-kq-7cC" id="zeG-2K-rjx"/>
+                <outlet property="selectedIV" destination="QSx-wT-ijG" id="6mR-sC-wwn"/>
+            </connections>
             <point key="canvasLocation" x="496.5" y="360.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="tab-动态-照片器-拍照" width="85" height="85"/>
+        <image name="拍照.png" width="85" height="85"/>
+        <image name="选取.png" width="19" height="19"/>
     </resources>
 </document>

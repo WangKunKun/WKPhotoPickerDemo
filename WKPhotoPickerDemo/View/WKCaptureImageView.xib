@@ -78,13 +78,13 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAP-F1-Peq">
-                            <rect key="frame" x="321" y="452" width="46" height="30"/>
+                            <rect key="frame" x="303" y="452" width="64" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="3ft-q6-w0r"/>
-                                <constraint firstAttribute="width" constant="46" id="ENb-kY-TXj"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="ENb-kY-TXj"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="分享">
+                            <state key="normal" title="使用照片">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>

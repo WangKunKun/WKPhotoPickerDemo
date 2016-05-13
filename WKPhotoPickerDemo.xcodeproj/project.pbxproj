@@ -16,7 +16,7 @@
 		4325AE4F1CE48CFD009866D9 /* WKPhotoPickerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE4E1CE48CFD009866D9 /* WKPhotoPickerDemoTests.m */; };
 		4325AE5A1CE48CFE009866D9 /* WKPhotoPickerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE591CE48CFE009866D9 /* WKPhotoPickerDemoUITests.m */; };
 		4325AE7C1CE4925A009866D9 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE691CE4925A009866D9 /* UIViewExt.m */; };
-		4325AE7D1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE6C1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m */; };
+		4325AE7D1CE4925A009866D9 /* WKPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE6C1CE4925A009866D9 /* WKPhotoPickerViewController.m */; };
 		4325AE7E1CE4925A009866D9 /* WKCaptureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE6F1CE4925A009866D9 /* WKCaptureImageView.m */; };
 		4325AE7F1CE4925A009866D9 /* WKCaptureImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4325AE701CE4925A009866D9 /* WKCaptureImageView.xib */; };
 		4325AE801CE4925A009866D9 /* WKImageSelectedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AE721CE4925A009866D9 /* WKImageSelectedScrollView.m */; };
@@ -47,6 +47,14 @@
 		4325AEB01CE49657009866D9 /* WKSBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AEAF1CE49657009866D9 /* WKSBManager.m */; };
 		4325AEB41CE4977F009866D9 /* WKPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4325AEB21CE4977F009866D9 /* WKPhotoCollectionViewCell.m */; };
 		4325AEB51CE4977F009866D9 /* WKPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4325AEB31CE4977F009866D9 /* WKPhotoCollectionViewCell.xib */; };
+		43B31BF61CE5BF71007A3955 /* 拍照@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B31BF41CE5BF71007A3955 /* 拍照@2x.png */; };
+		43B31BF71CE5BF71007A3955 /* 拍照@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B31BF51CE5BF71007A3955 /* 拍照@3x.png */; };
+		43B31BFA1CE5C171007A3955 /* 选取@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B31BF81CE5C171007A3955 /* 选取@2x.png */; };
+		43B31BFB1CE5C171007A3955 /* 选取@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B31BF91CE5C171007A3955 /* 选取@3x.png */; };
+		43B31BFE1CE5C84A007A3955 /* WKPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B31BFD1CE5C84A007A3955 /* WKPhotoManager.m */; };
+		43B31C011CE5DAD6007A3955 /* UIViewController+selectedImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B31C001CE5DAD6007A3955 /* UIViewController+selectedImages.m */; };
+		43B31C041CE5EAA9007A3955 /* WKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B31C031CE5EAA9007A3955 /* WKImagePickerController.m */; };
+		43B31C071CE5EB5A007A3955 /* UIImage+WKScreenshots.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B31C061CE5EB5A007A3955 /* UIImage+WKScreenshots.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,8 +93,8 @@
 		4325AE5B1CE48CFE009866D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4325AE681CE4925A009866D9 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		4325AE691CE4925A009866D9 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
-		4325AE6B1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTDynamicPhotoPickerViewController.h; sourceTree = "<group>"; };
-		4325AE6C1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTDynamicPhotoPickerViewController.m; sourceTree = "<group>"; };
+		4325AE6B1CE4925A009866D9 /* WKPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPhotoPickerViewController.h; sourceTree = "<group>"; };
+		4325AE6C1CE4925A009866D9 /* WKPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPhotoPickerViewController.m; sourceTree = "<group>"; };
 		4325AE6E1CE4925A009866D9 /* WKCaptureImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCaptureImageView.h; sourceTree = "<group>"; };
 		4325AE6F1CE4925A009866D9 /* WKCaptureImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCaptureImageView.m; sourceTree = "<group>"; };
 		4325AE701CE4925A009866D9 /* WKCaptureImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKCaptureImageView.xib; sourceTree = "<group>"; };
@@ -126,6 +134,18 @@
 		4325AEB11CE4977F009866D9 /* WKPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		4325AEB21CE4977F009866D9 /* WKPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		4325AEB31CE4977F009866D9 /* WKPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		43B31BF41CE5BF71007A3955 /* 拍照@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拍照@2x.png"; sourceTree = "<group>"; };
+		43B31BF51CE5BF71007A3955 /* 拍照@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拍照@3x.png"; sourceTree = "<group>"; };
+		43B31BF81CE5C171007A3955 /* 选取@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选取@2x.png"; sourceTree = "<group>"; };
+		43B31BF91CE5C171007A3955 /* 选取@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选取@3x.png"; sourceTree = "<group>"; };
+		43B31BFC1CE5C84A007A3955 /* WKPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPhotoManager.h; sourceTree = "<group>"; };
+		43B31BFD1CE5C84A007A3955 /* WKPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPhotoManager.m; sourceTree = "<group>"; };
+		43B31BFF1CE5DAD6007A3955 /* UIViewController+selectedImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+selectedImages.h"; sourceTree = "<group>"; };
+		43B31C001CE5DAD6007A3955 /* UIViewController+selectedImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+selectedImages.m"; sourceTree = "<group>"; };
+		43B31C021CE5EAA9007A3955 /* WKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKImagePickerController.h; sourceTree = "<group>"; };
+		43B31C031CE5EAA9007A3955 /* WKImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKImagePickerController.m; sourceTree = "<group>"; };
+		43B31C051CE5EB5A007A3955 /* UIImage+WKScreenshots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WKScreenshots.h"; sourceTree = "<group>"; };
+		43B31C061CE5EB5A007A3955 /* UIImage+WKScreenshots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WKScreenshots.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,10 +243,16 @@
 		4325AE671CE4925A009866D9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				43B31C051CE5EB5A007A3955 /* UIImage+WKScreenshots.h */,
+				43B31C061CE5EB5A007A3955 /* UIImage+WKScreenshots.m */,
 				4325AEAE1CE49657009866D9 /* WKSBManager.h */,
 				4325AEAF1CE49657009866D9 /* WKSBManager.m */,
 				4325AE681CE4925A009866D9 /* UIViewExt.h */,
 				4325AE691CE4925A009866D9 /* UIViewExt.m */,
+				43B31BFC1CE5C84A007A3955 /* WKPhotoManager.h */,
+				43B31BFD1CE5C84A007A3955 /* WKPhotoManager.m */,
+				43B31BFF1CE5DAD6007A3955 /* UIViewController+selectedImages.h */,
+				43B31C001CE5DAD6007A3955 /* UIViewController+selectedImages.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -234,8 +260,10 @@
 		4325AE6A1CE4925A009866D9 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				4325AE6B1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.h */,
-				4325AE6C1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m */,
+				43B31C021CE5EAA9007A3955 /* WKImagePickerController.h */,
+				43B31C031CE5EAA9007A3955 /* WKImagePickerController.m */,
+				4325AE6B1CE4925A009866D9 /* WKPhotoPickerViewController.h */,
+				4325AE6C1CE4925A009866D9 /* WKPhotoPickerViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -270,6 +298,10 @@
 		4325AE871CE493C8009866D9 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				43B31BF81CE5C171007A3955 /* 选取@2x.png */,
+				43B31BF91CE5C171007A3955 /* 选取@3x.png */,
+				43B31BF41CE5BF71007A3955 /* 拍照@2x.png */,
+				43B31BF51CE5BF71007A3955 /* 拍照@3x.png */,
 				4325AEA01CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@2x.png */,
 				4325AEA11CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@3x.png */,
 				4325AEA21CE4943A009866D9 /* tab-动态发布-添加图片@2x.png */,
@@ -357,6 +389,7 @@
 				TargetAttributes = {
 					4325AE301CE48CFD009866D9 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EJ8EJWCARH;
 					};
 					4325AE491CE48CFD009866D9 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -393,6 +426,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B31BF71CE5BF71007A3955 /* 拍照@3x.png in Resources */,
+				43B31BFB1CE5C171007A3955 /* 选取@3x.png in Resources */,
 				4325AE9A1CE493C8009866D9 /* 确认@2x.png in Resources */,
 				4325AE951CE493C8009866D9 /* iconfont-xiangjifanzhuan@3x.png in Resources */,
 				4325AE441CE48CFD009866D9 /* LaunchScreen.storyboard in Resources */,
@@ -413,6 +448,8 @@
 				4325AE861CE4925A009866D9 /* WKWatermarkCameraView.xib in Resources */,
 				4325AE821CE4925A009866D9 /* WKNavView.xib in Resources */,
 				4325AE941CE493C8009866D9 /* iconfont-xiangjifanzhuan@2x.png in Resources */,
+				43B31BFA1CE5C171007A3955 /* 选取@2x.png in Resources */,
+				43B31BF61CE5BF71007A3955 /* 拍照@2x.png in Resources */,
 				4325AEA51CE4943A009866D9 /* 完成跑步-RuningBang·奔跑帮@3x.png in Resources */,
 				4325AE7F1CE4925A009866D9 /* WKCaptureImageView.xib in Resources */,
 				4325AE971CE493C8009866D9 /* 删除@3x.png in Resources */,
@@ -443,17 +480,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				4325AE811CE4925A009866D9 /* WKNavView.m in Sources */,
+				43B31C011CE5DAD6007A3955 /* UIViewController+selectedImages.m in Sources */,
 				4325AE7C1CE4925A009866D9 /* UIViewExt.m in Sources */,
+				43B31C071CE5EB5A007A3955 /* UIImage+WKScreenshots.m in Sources */,
 				4325AE831CE4925A009866D9 /* WKSelectImageView.m in Sources */,
 				4325AEAB1CE494BE009866D9 /* WKCameroCell.m in Sources */,
 				4325AE801CE4925A009866D9 /* WKImageSelectedScrollView.m in Sources */,
 				4325AE7E1CE4925A009866D9 /* WKCaptureImageView.m in Sources */,
 				4325AEB01CE49657009866D9 /* WKSBManager.m in Sources */,
-				4325AE7D1CE4925A009866D9 /* QTDynamicPhotoPickerViewController.m in Sources */,
+				4325AE7D1CE4925A009866D9 /* WKPhotoPickerViewController.m in Sources */,
 				4325AE851CE4925A009866D9 /* WKWatermarkCameraView.m in Sources */,
 				4325AE3C1CE48CFD009866D9 /* ViewController.m in Sources */,
 				4325AE391CE48CFD009866D9 /* AppDelegate.m in Sources */,
 				4325AEB41CE4977F009866D9 /* WKPhotoCollectionViewCell.m in Sources */,
+				43B31BFE1CE5C84A007A3955 /* WKPhotoManager.m in Sources */,
+				43B31C041CE5EAA9007A3955 /* WKImagePickerController.m in Sources */,
 				4325AE361CE48CFD009866D9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,11 +636,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = WKPhotoPickerDemo/WKPchHeader.pch;
 				INFOPLIST_FILE = WKPhotoPickerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WangKunKun.WKPhotoPickerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -607,11 +651,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = WKPhotoPickerDemo/WKPchHeader.pch;
 				INFOPLIST_FILE = WKPhotoPickerDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WangKunKun.WKPhotoPickerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -680,6 +727,7 @@
 				4325AE601CE48CFE009866D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4325AE611CE48CFE009866D9 /* Build configuration list for PBXNativeTarget "WKPhotoPickerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -688,6 +736,7 @@
 				4325AE631CE48CFE009866D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4325AE641CE48CFE009866D9 /* Build configuration list for PBXNativeTarget "WKPhotoPickerDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -696,6 +745,7 @@
 				4325AE661CE48CFE009866D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

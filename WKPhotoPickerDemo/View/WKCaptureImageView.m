@@ -39,8 +39,8 @@
 - (IBAction)sender:(UIButton *)sender {
     
     if (_saveImage == nil) {
-//        UIImage * image = [QTUtils getTargetViewScreenShotImageWith:_captureView];
-//        _saveImage = image;
+        UIImage * image = [UIImage getTargetViewScreenShotImageWithView:_captureView];
+        _saveImage = image;
     }
 
     

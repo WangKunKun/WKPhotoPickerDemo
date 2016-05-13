@@ -6,13 +6,11 @@
 //  Copyright © 2016年 qitianxiongdi. All rights reserved.
 //
 
-#import "QTImagePickerController.h"
+#import "WKImagePickerController.h"
 #import "WKWatermarkCameraView.h"
 #import "WKCaptureImageView.h"
-#import "WKThirdShareView.h"
-#import "QTRunningViewController.h"
 
-@interface QTImagePickerController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface WKImagePickerController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) WKWatermarkCameraView * watermarkCameraView;
 @property (nonatomic, strong) WKCaptureImageView * captureView;
@@ -20,18 +18,45 @@
 
 @end
 
-@implementation QTImagePickerController
+@implementation WKImagePickerController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.model = WKImagePickerControllerModel_Default;
+    }
+    return self;
+}
+
+- (id)initWithModel:(WKImagePickerControllerModel)model
+{
+    self = [super init];
+    if (self) {
+        self.model = model;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.sourceType=UIImagePickerControllerSourceTypeCamera;
-    self.delegate=self;
-    self.showsCameraControls=NO;
-    self.allowsEditing=YES;
-    //iOS8 以上才有
     self.modalPresentationStyle=UIModalPresentationOverCurrentContext;
+    
+//    self.showsCameraControls = _model;
+    self.allowsEditing=YES;
+    self.sourceType=UIImagePickerControllerSourceTypeCamera;
+
+
+    self.delegate = self;
+
+    
+    
+}
+
+- (void)initWatermarkModel
+{
     _watermarkCameraView = [WKWatermarkCameraView viewFromNIB];
     _watermarkCameraView.frame=self.cameraOverlayView.frame;
     _watermarkCameraView.distance = _distance;
@@ -44,7 +69,7 @@
                 break;
             case 1:
                 weakSelf.cameraDevice = selected ? UIImagePickerControllerCameraDeviceFront : UIImagePickerControllerCameraDeviceRear;
-            
+                
                 break;
             case 2:
                 [weakSelf dismissViewControllerAnimated:YES completion:nil];
@@ -59,7 +84,6 @@
         }
     }];
     //覆盖view
-    self.cameraOverlayView=_watermarkCameraView;
     
     _captureView = [WKCaptureImageView viewFromNIB];
     _captureView.frame = self.cameraOverlayView.frame;
@@ -69,36 +93,33 @@
             case 0:
                 [weakSelf.captureView removeFromSuperview];
                 break;
-            case 1:
+            case 1://OK
                 [weakSelf dismissViewControllerAnimated:YES completion:nil];
                 break;
-            case 2:
-                //分享
-            {
-                UIViewController * vc = weakSelf.presentingViewController;
-                QTRunningViewController * temp = nil;
-                if ([vc isKindOfClass:[UINavigationController class]]) {
-                    UINavigationController * nav = (UINavigationController *)vc;
-                    temp = nav.viewControllers[0];
+            case 2://使用照片
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+                //图片要传回去用代理
+                if (weakSelf.wkImagePickerDelegate && [weakSelf.wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+                    [weakSelf.wkImagePickerDelegate takePhoto:image];
                 }
-                else if([vc isKindOfClass:[QTRunningViewController class]])
-                {
-                    temp = (QTRunningViewController *)vc;
-                }
-                
-                temp.gotoModel = WKRunningVCGoToPublishDynamicVC;
-                temp.saveImage = weakSelf.captureView.saveImage;
-                NSLog(@"ttttt %@",temp);
-                [weakSelf dismissViewControllerAnimated:NO completion:nil];
-            }
+                break;
+
                 break;
             default:
                 break;
         }
     }];
-
-
     
+    
+        self.cameraOverlayView=_watermarkCameraView;
+}
+
+- (void)setModel:(WKImagePickerControllerModel)model
+{
+    _model = model;
+    if (_model == WKImagePickerControllerModel_WaterMark) {
+        [self initWatermarkModel];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,9 +130,24 @@
 //拍照回调
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    _captureView.mainImage =  [info objectForKey:UIImagePickerControllerOriginalImage];
-    _captureView.watemarkImage = _watermarkCameraView.saveImage;
-    [self.view addSubview:_captureView];
+    
+    UIImage * temp = [info objectForKey:UIImagePickerControllerOriginalImage];
+    if (self.model == WKImagePickerControllerModel_WaterMark) {
+        _captureView.mainImage =  [info objectForKey:UIImagePickerControllerOriginalImage];
+        _captureView.watemarkImage = _watermarkCameraView.saveImage;
+        [self.view addSubview:_captureView];
+    }
+    else
+    {
+
+        [self dismissViewControllerAnimated:YES completion:nil];
+        //图片要传回去用代理
+        if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+            [_wkImagePickerDelegate takePhoto:temp];
+        }
+        
+    }
+    
     
 }
 /*

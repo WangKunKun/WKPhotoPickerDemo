@@ -23,7 +23,6 @@
 
 @property (nonatomic, strong) NSArray<UIImage *> *images;
 @property (nonatomic, assign) id<WKImageSelectedScrollViewDelegate> wkDelegate;
-@property (nonatomic, assign) UIViewController <WKImageSelectedScrollViewDelegate> * wkVCDelegate;
 
 
 @property (nonatomic, assign) NSArray <NSDictionary *>* selectImages;
