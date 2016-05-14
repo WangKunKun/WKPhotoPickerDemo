@@ -42,14 +42,7 @@
     
     _cellSize = CGSizeMake(85*WIDTH_SCALE, 85*HEIGHT_SCALE);
     _maxImageCount = 9;
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    if(!([deviceString isEqualToString:@"i386"] ||  [deviceString isEqualToString:@"x86_64"]))
-    {
-        [self initUIImagePickerController];
-        
-    }
+
     
     WKNavView * nav = [WKNavView viewFromNIB];
     nav.leftTitle = @"取消";
@@ -71,6 +64,8 @@
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     [self.view addSubview:_collectionView];
+    
+    
     
     [[WKPhotoManager sharedPhotoManager] refreshDataWithBlock:^(NSArray<UIImage *> *sourceImages) {
 //         _sourceImages = [[WKPhotoManager sharedPhotoManager] getThumbWithSize:_cellSize];
@@ -108,17 +103,24 @@
     }
 }
 
+#pragma warning 多相册模式时 为nil 或者选中数量为0 不能传，因为可能相册不同
+#pragma warning 只有全部照片，没有其他相册模式时，则应该传
 - (void)rightBtnClick:(UIButton *)btn
 {
     if (self.navigationController != nil) {
         NSArray * vcs = self.navigationController.viewControllers;
         UIViewController * vc = vcs[vcs.count - 2];
-        vc.selectedImages = self.selectedImages;
+        if (self.selectedImages && self.selectedImages.count > 0) {
+            vc.selectedImages = self.selectedImages;
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {
-        self.presentingViewController.selectedImages = self.selectedImages;
+        
+        if (self.selectedImages && self.selectedImages.count > 0) {
+            self.presentingViewController.selectedImages = self.selectedImages;
+        }
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -167,16 +169,44 @@
     return cell;
 }
 
-#pragma 相应事件
--(void)initUIImagePickerController{
-    _cameraController=[[WKImagePickerController alloc]init];
-    _cameraController.wkImagePickerDelegate = self;
+-(void)selectCameraModel
+{
+    
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    if(([deviceString isEqualToString:@"i386"] ||  [deviceString isEqualToString:@"x86_64"]))
+    {
+        NSLog(@"对不起模拟器不支持相机功能，请用真机测试");
+        return;
+    }
+    
+    UIAlertController * sheetAlertController = [UIAlertController alertControllerWithTitle:@"请选择打开方式" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction * defaultCamera =[UIAlertAction actionWithTitle:@"系统相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        _cameraController = [[WKImagePickerController alloc]initWithModel:WKImagePickerControllerModel_Default];
+        _cameraController.wkImagePickerDelegate = self;
+        [self presentViewController:_cameraController animated:YES completion:nil];
+
+    }];
+    UIAlertAction * watermarkCamera =[UIAlertAction actionWithTitle:@"水印相机" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        _cameraController = [[WKImagePickerController alloc]initWithModel:WKImagePickerControllerModel_WaterMark];
+        _cameraController.wkImagePickerDelegate = self;
+        [self presentViewController:_cameraController animated:YES completion:nil];
+    }];
+    
+    UIAlertAction * canle =[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [sheetAlertController addAction:canle];
+    [sheetAlertController addAction:defaultCamera];
+    [sheetAlertController addAction:watermarkCamera];
+    [self presentViewController:sheetAlertController animated:YES completion:nil];
     
 }
 
 - (void)takePhoto:(UIImage *)image
 {
-    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     
     //超过则先移除
     if (self.selectedImages.count >= 9) {
@@ -214,21 +244,12 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row==0) {
         //打开相机
-        
-        if(!_cameraController)
-        {
-            NSLog(@"对不起模拟器不支持相机功能，请用真机测试");
-            return;
-        }
-        [self presentViewController:_cameraController animated:YES completion:nil];
-        
+        [self selectCameraModel];
     }
     else
     {
 //        
         WKPhotoCollectionViewCell * cell = (WKPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-//
-//
         NSUInteger index = indexPath.row ;
         NSString * key = [NSString stringWithFormat:@"%lu",index];
         if (!cell.isSelected) {

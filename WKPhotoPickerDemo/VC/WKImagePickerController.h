@@ -25,6 +25,8 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, assign) CGFloat distance;
 
+@property (nonatomic, strong) NSString * albumName;
+
 @property (nonatomic, assign, readonly) WKImagePickerControllerModel model;
 
 @property (nonatomic, assign) id<WKImagePickerControllerDelegate> wkImagePickerDelegate;

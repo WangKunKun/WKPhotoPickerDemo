@@ -46,7 +46,8 @@
     
     if (sender.tag == 101 || sender.tag == 102) {
     //ok按钮
-    UIImageWriteToSavedPhotosAlbum(_saveImage, nil, nil, nil);
+//    UIImageWriteToSavedPhotosAlbum(_saveImage, nil, nil, nil);
+    
     //把截图保存到相册
     }
     

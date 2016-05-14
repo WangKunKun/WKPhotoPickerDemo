@@ -10,8 +10,8 @@
 
 @interface WKSelectImageView ()
 
-@property (weak, nonatomic) IBOutlet UIButton *imageBtn;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *IV;
 
 @end
 
@@ -24,12 +24,17 @@
     NSArray * views = [[NSBundle mainBundle] loadNibNamed:@"WKSelectImageView" owner:nil options:nil];
     WKSelectImageView * sv = views[0];
     sv.backgroundColor = [UIColor clearColor];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:sv action:@selector(imageBtnClick:)];
+    
+    [sv.IV addGestureRecognizer:tap];
+    
     return sv;
 
 }
 
-- (IBAction)imageBtnClick:(UIButton *)sender {
-    if (sender.selected) {
+- (void)imageBtnClick:(UIGestureRecognizer *)sender {
+    if (self.presentImage) {
         NSLog(@"查看图片");
         if(_wkDelegate && [_wkDelegate respondsToSelector:@selector(selectImageView:style:)])
         {
@@ -57,8 +62,7 @@
 - (void)setPresentImage:(UIImage *)presentImage
 {
     _presentImage = presentImage;
-    [_imageBtn setBackgroundImage:presentImage forState:UIControlStateSelected];
-    _imageBtn.selected = presentImage != nil;
+    _IV.image = _presentImage;
     _deleteBtn.hidden = presentImage == nil;
 }
 

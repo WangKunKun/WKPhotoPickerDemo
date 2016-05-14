@@ -9,6 +9,7 @@
 #import "WKImagePickerController.h"
 #import "WKWatermarkCameraView.h"
 #import "WKCaptureImageView.h"
+#import "WKPhotoManager.h"
 
 @interface WKImagePickerController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -42,14 +43,6 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.modalPresentationStyle=UIModalPresentationOverCurrentContext;
-    
-//    self.showsCameraControls = _model;
-    self.allowsEditing=YES;
-    self.sourceType=UIImagePickerControllerSourceTypeCamera;
-
-
-    self.delegate = self;
 
     
     
@@ -97,14 +90,19 @@
                 [weakSelf dismissViewControllerAnimated:YES completion:nil];
                 break;
             case 2://使用照片
-                [weakSelf dismissViewControllerAnimated:YES completion:nil];
-                //图片要传回去用代理
-                if (weakSelf.wkImagePickerDelegate && [weakSelf.wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
-                    [weakSelf.wkImagePickerDelegate takePhoto:image];
-                }
-                break;
+            {
+                [[WKPhotoManager sharedPhotoManager] saveImage:image];
+
+                [weakSelf dismissViewControllerAnimated:YES completion:^{
+                    //图片要传回去用代理
+                    if (weakSelf.wkImagePickerDelegate && [weakSelf.wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+                        [weakSelf.wkImagePickerDelegate takePhoto:image];
+                    }
+                }];
+            }
 
                 break;
+
             default:
                 break;
         }
@@ -117,6 +115,14 @@
 - (void)setModel:(WKImagePickerControllerModel)model
 {
     _model = model;
+    self.modalPresentationStyle=UIModalPresentationOverCurrentContext;
+    self.sourceType=UIImagePickerControllerSourceTypeCamera;
+    self.showsCameraControls = _model;
+    self.allowsEditing=YES;
+    
+    
+    self.delegate = self;
+
     if (_model == WKImagePickerControllerModel_WaterMark) {
         [self initWatermarkModel];
     }
@@ -139,12 +145,15 @@
     }
     else
     {
+        [[WKPhotoManager sharedPhotoManager] saveImage:temp];
 
-        [self dismissViewControllerAnimated:YES completion:nil];
-        //图片要传回去用代理
-        if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
-            [_wkImagePickerDelegate takePhoto:temp];
-        }
+        [self dismissViewControllerAnimated:YES completion:^{
+            //图片要传回去用代理
+            if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+                [_wkImagePickerDelegate takePhoto:temp];
+            }
+        }];
+
         
     }
     

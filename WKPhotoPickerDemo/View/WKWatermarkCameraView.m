@@ -34,8 +34,8 @@
     WKWatermarkCameraView * cv = views[0];
     [cv initData];
     
-    UINib* cellNib=[UINib nibWithNibName:@"QTCameroLogoCell" bundle:nil];
-    [cv.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"QTCameroLogoCell"];
+    UINib* cellNib=[UINib nibWithNibName:@"WKCameroCell" bundle:nil];
+    [cv.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"WKCameroCell"];
     cv.collectionView.delegate = cv;
     cv.collectionView.dataSource = cv;
     return cv;
@@ -44,7 +44,7 @@
 {
     _logoImageArray=[[NSMutableArray alloc]init];
     //假数据
-    [_logoImageArray addObject:GET_IMAGE(@"完成跑步-RuningBang·奔跑帮.png")];
+    [_logoImageArray addObject:GET_IMAGE(@"完成跑步-RuningBang·奔跑帮@2x.png")];
 
 }
 /*
@@ -74,7 +74,7 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    WKCameroCell * cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"QTCameroLogoCell" forIndexPath:indexPath];
+    WKCameroCell * cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"WKCameroCell" forIndexPath:indexPath];
     
     if (indexPath.row==0) {
         cell.logoImageView.hidden=YES;
