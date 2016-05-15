@@ -55,12 +55,26 @@
     [self.view addSubview:nav];
     nav.wkNVDelegate = self;
     
+    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 30, SCREEN_WIDTH, 30)];
+    bottomView.backgroundColor = nav.backgroundColor;
+    [self.view addSubview:bottomView];
+    
+    _hintLabel = [[UILabel alloc] init];
+    _hintLabel.textColor = [UIColor whiteColor];
+    _hintLabel.sizeS = CGSizeMake(150, 20);
+    _hintLabel.center = CGPointMake(bottomView.widthS / 2, bottomView.heightS / 2);
+    _hintLabel.textAlignment = NSTextAlignmentCenter;
+    _hintLabel.font = [UIFont systemFontOfSize:16];
+    [bottomView addSubview:_hintLabel];
+    
+    
+    
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     flowLayout.itemSize = _cellSize;
     flowLayout.sectionInset = UIEdgeInsetsMake(5, 2.5, 5,2.5);
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, nav.bottomS, SCREEN_WIDTH, SCREEN_HEIGHT-nav.bottomS) collectionViewLayout:flowLayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, nav.bottomS, SCREEN_WIDTH, SCREEN_HEIGHT-nav.bottomS-bottomView.heightS) collectionViewLayout:flowLayout];
     
     UINib* cellNib=[UINib nibWithNibName:@"WKPhotoCollectionViewCell" bundle:nil];
     [_collectionView registerNib:cellNib forCellWithReuseIdentifier:@"WKPhotoCollectionViewCell"];
@@ -68,15 +82,7 @@
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     [self.view addSubview:_collectionView];
-    
-    
-    _hintLabel = [[UILabel alloc] init];
-    _hintLabel.textColor = [UIColor whiteColor];
-    _hintLabel.sizeS = CGSizeMake(150, 20);
-    _hintLabel.center = CGPointMake(self.view.center.x, self.view.heightS - 20 - 10);
-    _hintLabel.textAlignment = NSTextAlignmentCenter;
-    _hintLabel.font = [UIFont systemFontOfSize:16];
-    [self.view addSubview:_hintLabel];
+
     
     
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(numberOfSelectMax)]) {
