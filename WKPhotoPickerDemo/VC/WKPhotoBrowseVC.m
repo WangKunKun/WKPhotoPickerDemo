@@ -42,11 +42,13 @@
     _scrollView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_scrollView];
     
-    self.currentIndex = 0;
-    
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(imagesOfSource)]) {
         _images = [[_wkDelegate imagesOfSource] mutableCopy];
     }
+    
+    self.currentIndex = 1;
+    
+
     
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(currentIndexOfImages)]) {
         self.currentIndex  = [_wkDelegate currentIndexOfImages];

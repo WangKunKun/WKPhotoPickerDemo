@@ -266,10 +266,11 @@
     
     //添加
     NSDictionary * dict = @{@"1":image};
-//    [self.selectedImages insertObject:dict atIndex:0];
 
     [self.selectedImages addObject:dict];
     [delegateDict setValue:dict forKey:@"1"];
+
+    _hintLabel.text = [NSString stringWithFormat:@"已选择%lu/%lu张图片",(unsigned long)self.selectedImages.count,_maxImageCount];
 
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(changeToChooseWithDict:)]) {
         [_wkDelegate changeToChooseWithDict:delegateDict];
