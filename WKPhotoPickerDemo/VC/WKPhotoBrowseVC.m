@@ -42,19 +42,19 @@
     _scrollView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_scrollView];
     
-    _currentIndex = 0;
+    self.currentIndex = 0;
     
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(imagesOfSource)]) {
         _images = [[_wkDelegate imagesOfSource] mutableCopy];
     }
     
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(currentIndexOfImages)]) {
-        _currentIndex  = [_wkDelegate currentIndexOfImages];
+        self.currentIndex  = [_wkDelegate currentIndexOfImages];
     }
     
     
 
-    _nav.title = [NSString stringWithFormat:@"%lu/%lu",_currentIndex,_images.count];
+//    _nav.title = [NSString stringWithFormat:@"%lu/%lu",_currentIndex,_images.count];
 
     UILongPressGestureRecognizer * longpress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(wkTouch:)];
     [self.view addGestureRecognizer:longpress];
@@ -107,15 +107,15 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSUInteger page = scrollView.contentOffset.x / SCREEN_WIDTH;
-    _currentIndex = page;
+    self.currentIndex = page;
     
-    
+
 }
 
 - (void)setCurrentIndex:(NSUInteger)currentIndex
 {
     _currentIndex = currentIndex;
-    _nav.title = [NSString stringWithFormat:@"%lu/%lu",_currentIndex,_images.count];
+    _nav.title = [NSString stringWithFormat:@"%lu/%lu",_currentIndex + 1,_images.count];
 }
 
 - (void)didReceiveMemoryWarning {

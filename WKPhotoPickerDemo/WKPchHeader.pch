@@ -29,6 +29,6 @@
 
 #pragma warning 单一模式 - 1 Or  多相册模式 - 0
 
-#define WKSingleModel 0
+#define WKSingleModel 1
 
 #endif /* WKPchHeader_pch */
