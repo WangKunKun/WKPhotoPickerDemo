@@ -23,7 +23,7 @@
 #define is_iPhone6plus (SCREEN_WIDTH > 375)
 
 #import "UIViewExt.h"
-#import "UIViewController+selectedImages.h"
+//#import "UIViewController+selectedImages.h"
 #import "UIImage+WKScreenshots.h"
 
 

@@ -22,13 +22,17 @@
 
 @property (strong, nonatomic)  WKImagePickerController *cameraController;//相机控制器
 
+@property (nonatomic, strong) NSMutableArray<NSDictionary *> * selectedImages;
+
 
 //缩略图
 @property (nonatomic, strong) NSArray * sourceImages;
+@property (nonatomic) NSUInteger maxImageCount;
 
-@property (nonatomic, strong) NSMutableArray * selectedImageKeys;
 
 @property (nonatomic, assign) CGSize cellSize;
+
+@property (nonatomic, strong) UILabel * hintLabel;
 
 @end
 
@@ -37,11 +41,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if(self.selectedImages == nil)
-        self.selectedImages = [NSMutableArray array];
+
+    _maxImageCount = 9;
+
     
     _cellSize = CGSizeMake(85*WIDTH_SCALE, 85*HEIGHT_SCALE);
-    _maxImageCount = 9;
 
     
     WKNavView * nav = [WKNavView viewFromNIB];
@@ -66,9 +70,30 @@
     [self.view addSubview:_collectionView];
     
     
+    _hintLabel = [[UILabel alloc] init];
+    _hintLabel.textColor = [UIColor whiteColor];
+    _hintLabel.sizeS = CGSizeMake(150, 20);
+    _hintLabel.center = CGPointMake(self.view.center.x, self.view.heightS - 20 - 10);
+    _hintLabel.textAlignment = NSTextAlignmentCenter;
+    _hintLabel.font = [UIFont systemFontOfSize:16];
+    [self.view addSubview:_hintLabel];
+    
+    
+    if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(numberOfSelectMax)]) {
+        _maxImageCount = [_wkDelegate numberOfSelectMax];
+    }
+    
+    if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(imagesOfSelected)]) {
+        _selectedImages = [[_wkDelegate imagesOfSelected] mutableCopy];
+    }
+    
+    if(self.selectedImages == nil)
+        self.selectedImages = [NSMutableArray array];
+    
+    _hintLabel.text = [NSString stringWithFormat:@"已选择%lu/%lu张图片",(unsigned long)self.selectedImages.count,_maxImageCount];
+
     
     [[WKPhotoManager sharedPhotoManager] refreshDataWithBlock:^(NSArray<UIImage *> *sourceImages) {
-//         _sourceImages = [[WKPhotoManager sharedPhotoManager] getThumbWithSize:_cellSize];
         _sourceImages = sourceImages;
         [_collectionView reloadData];
     }];
@@ -76,14 +101,11 @@
    
     self.view.backgroundColor = [UIColor whiteColor];
 
-    
-
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+
     
 }
 - (void)didReceiveMemoryWarning {
@@ -93,6 +115,10 @@
 
 - (void)leftBtnClick:(UIButton *)btn
 {
+    if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(chooseToComplete:)]) {
+        [_wkDelegate chooseToComplete:nil];
+    }
+    
     if (self.navigationController != nil) {
 
         [self.navigationController popViewControllerAnimated:YES];
@@ -107,20 +133,25 @@
 #pragma warning 只有全部照片，没有其他相册模式时，则应该传
 - (void)rightBtnClick:(UIButton *)btn
 {
+
+    if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(chooseToComplete:)]) {
+        [_wkDelegate chooseToComplete:self.selectedImages];
+    }
+    
     if (self.navigationController != nil) {
         NSArray * vcs = self.navigationController.viewControllers;
         UIViewController * vc = vcs[vcs.count - 2];
-        if (self.selectedImages && self.selectedImages.count > 0) {
-            vc.selectedImages = self.selectedImages;
-        }
+//        if (self.selectedImages && self.selectedImages.count > 0) {
+//            vc.selectedImages = self.selectedImages;
+//        }
         [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {
         
-        if (self.selectedImages && self.selectedImages.count > 0) {
-            self.presentingViewController.selectedImages = self.selectedImages;
-        }
+//        if (self.selectedImages && self.selectedImages.count > 0) {
+//            self.presentingViewController.selectedImages = self.selectedImages;
+//        }
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -140,7 +171,6 @@
     return _sourceImages.count + 1;
 }
 
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
    WKPhotoCollectionViewCell * cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"WKPhotoCollectionViewCell" forIndexPath:indexPath];
@@ -207,10 +237,14 @@
 
 - (void)takePhoto:(UIImage *)image
 {
-    
+    NSMutableDictionary * delegateDict = [NSMutableDictionary dictionary];
+
     //超过则先移除
     if (self.selectedImages.count >= 9) {
+        [delegateDict setValue:self.selectedImages[0] forKey:@"0"];
+
         [self.selectedImages removeObjectAtIndex:0];
+
     }
     
     //所有选中图片的 images的key + 1;
@@ -232,8 +266,14 @@
     
     //添加
     NSDictionary * dict = @{@"1":image};
-    [self.selectedImages insertObject:dict atIndex:0];
-    
+//    [self.selectedImages insertObject:dict atIndex:0];
+
+    [self.selectedImages addObject:dict];
+    [delegateDict setValue:dict forKey:@"1"];
+
+    if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(changeToChooseWithDict:)]) {
+        [_wkDelegate changeToChooseWithDict:delegateDict];
+    }
     //刷新数据
     [[WKPhotoManager sharedPhotoManager] refreshDataWithBlock:^(NSArray<UIImage *> *sourceImages) {
         _sourceImages = sourceImages;
@@ -252,6 +292,8 @@
         WKPhotoCollectionViewCell * cell = (WKPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
         NSUInteger index = indexPath.row ;
         NSString * key = [NSString stringWithFormat:@"%lu",index];
+        
+        NSMutableDictionary * delegateDict = [NSMutableDictionary dictionary];
         if (!cell.isSelected) {
             //当数量超过时
             if (self.selectedImages.count >= _maxImageCount) {
@@ -265,13 +307,18 @@
                     WKPhotoCollectionViewCell * cell = (WKPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:path];
                     cell.isSelected = NO;
                 }
+                
+                [delegateDict setValue:self.selectedImages[0] forKey:@"0"];
+                
                 [self.selectedImages removeObjectAtIndex:0];
+                
             }
             //新增
             NSDictionary * dict = @{key:_sourceImages[index - 1]};
             [self.selectedImages addObject:dict];
+            [delegateDict setValue:dict forKey:@"1"];
 
-
+            
         }
         else
         {
@@ -285,69 +332,22 @@
                     }
                 }
                 if (deleteFlag) {
+                    [delegateDict setValue:dict forKey:@"0"];
                     [self.selectedImages removeObject:dict];
                     break;
                 }
             }
         }
+        _hintLabel.text = [NSString stringWithFormat:@"已选择%lu/%lu张图片",(unsigned long)self.selectedImages.count,_maxImageCount];
         cell.isSelected = !cell.isSelected;
-
+        if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(changeToChooseWithDict:)]) {
+            [_wkDelegate changeToChooseWithDict:delegateDict];
+        }
 
     }
 }
-#pragma  相机回调
 
 
-//-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
-//{
-//    UIImage *image= [info objectForKey:UIImagePickerControllerOriginalImage];
-//    
-//    if (picker.sourceType==UIImagePickerControllerSourceTypeCamera) {
-//        //保存到 相册
-//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-//    }
-//    //刷新数据
-//
-//    
-//    
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        //点击使用照片 才会如何?
-//        
-//        //超过则先移除
-//        if (self.selectedImages.count >= 9) {
-//            [self.selectedImages removeObjectAtIndex:0];
-//        }
-//        
-//        //所有选中图片的 images的key + 1;
-//        
-//        for (NSUInteger i = 0 ; i < self.selectedImages.count ;i ++) {
-//            NSDictionary * oldDict = self.selectedImages[i];
-//            NSArray * arr = [oldDict allKeys];
-//            NSMutableDictionary * newDict = [[NSMutableDictionary alloc] init];
-//            for (NSString * key in arr) {
-//                NSUInteger index = [key integerValue];
-//                index += 1;
-//                NSString * newKey = [NSString stringWithFormat:@"%lu",index];
-//                [newDict setObject:[oldDict valueForKey:key] forKey:newKey];
-//            }
-//            [self.selectedImages removeObjectAtIndex:i];
-//            [self.selectedImages insertObject:newDict atIndex:i];
-//            
-//        }
-//        
-//        //添加
-//        NSDictionary * dict = @{@"1":image};
-//        [self.selectedImages insertObject:dict atIndex:0];
-//
-//        //刷新数据
-//        [[WKPhotoManager sharedPhotoManager] refreshDataWithBlock:^(NSArray<UIImage *> *sourceImages) {
-//            _sourceImages = sourceImages;
-//            [_collectionView reloadData];
-//        }];
-//
-//    }];
-//
-//}
 
 
 

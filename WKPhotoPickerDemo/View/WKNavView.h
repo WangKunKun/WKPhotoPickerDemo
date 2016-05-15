@@ -32,4 +32,7 @@
 @property (nonatomic, assign) BOOL isRightBtnCanClick;
 
 @property (nonatomic, assign) id<WKNavViewDelegate> wkNVDelegate;
+
+- (void)show:(BOOL)flag;
+
 @end

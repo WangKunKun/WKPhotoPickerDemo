@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rightBtn;
 
+
 @end
 
 @implementation WKNavView
@@ -85,5 +86,24 @@
     }
 }
 
+
+
+- (void)show:(BOOL)flag
+{
+    CGFloat alpha = flag ? 1 : 0;
+    NSLog(@"%.0lf",alpha);
+    if (flag) {
+        self.hidden = NO;
+    }
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha = alpha;
+    } completion:^(BOOL finished) {
+        if (finished && !flag) {
+            self.hidden = YES;
+        }
+    }];
+    
+    
+}
 
 @end

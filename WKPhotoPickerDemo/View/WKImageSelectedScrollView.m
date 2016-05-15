@@ -8,7 +8,6 @@
 
 #import "WKImageSelectedScrollView.h"
 #import "WKPhotoPickerViewController.h"
-#import "WKSBManager.h"
 
 #define SCROLLVIEWWIDTH SCREEN_WIDTH
 #define SCROLLVIEWHEIGHT (120)

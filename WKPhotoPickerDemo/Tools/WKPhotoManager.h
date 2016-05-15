@@ -25,7 +25,7 @@ typedef void(^WKPhotoBlock)(NSArray<UIImage *> * sourceImages);
 
 @property (nonatomic, assign) CGSize imageSize;//返回图片的尺寸 默认200*200
 @property (nonatomic, assign) WKPhotoContentModel contentModel;//图片裁剪模式 默认Fit
-@property (nonatomic, assign) NSUInteger correctAlbumIndex;//当前相册数据的索引 默认0（全部照片）
+@property (nonatomic, assign) NSUInteger currentAlbumIndex;//当前相册数据的索引 默认0（全部照片）
 @property (nonatomic, assign, readonly) NSUInteger albumCount;//相册数量 = 总相册数量 + 1（包含一个全部图片）
 @property (nonatomic, strong, readonly) NSArray * albumNames;//相册名称
 

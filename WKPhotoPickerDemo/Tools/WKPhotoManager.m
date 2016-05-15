@@ -43,14 +43,15 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
         PM.albums = [NSMutableArray array];
         PM.albumNamesM = [NSMutableArray array];
         PM.collections = [NSMutableArray array];
-        PM.correctAlbumIndex = 0;
+        PM.currentAlbumIndex = 0;
         PM.imageSize = CGSizeMake(200, 200);
         PM.contentModel = WKPhotoContentModel_Fit;
         PM.hasWKAlbum = NO;
         [PM initAllPhotoData];
     });
     
-
+    
+    
     return PM;
 }
 
@@ -97,7 +98,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
         if ([collection isKindOfClass:[PHAssetCollection class]])
         {
             PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
-//            NSLog(@"%@",assetCollection.localizedTitle);
+            NSLog(@"%@",assetCollection.localizedTitle);
             
             if ([assetCollection.localizedTitle isEqualToString:WKAlbumName]) {
                 _hasWKAlbum = YES;
@@ -145,7 +146,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
         [self.thumbs      removeAllObjects];
         [self.sourceImages removeAllObjects];
         
-        for (PHAsset* asset in self.albums[self.correctAlbumIndex]) {
+        for (PHAsset* asset in self.albums[self.currentAlbumIndex]) {
             PHImageRequestOptions * imageRequest_Option=[[PHImageRequestOptions alloc]init];
             imageRequest_Option.deliveryMode=PHImageRequestOptionsDeliveryModeHighQualityFormat;
             //不允许网络加载
@@ -183,12 +184,12 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
 
 
 
-/**
-  * 保存图片到相册
-  */
-- (void)saveImage:(UIImage *)image {
+
+- (void)saveImage:(UIImage *)image
+{
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-    if (status == PHAuthorizationStatusDenied) {
+    if (status == PHAuthorizationStatusDenied)
+    {
         NSLog(@"请到【设置-隐私-照片】打开访问开关");
     }
     else if (status == PHAuthorizationStatusRestricted)
@@ -198,8 +199,6 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
     else
     {
 
-        
-        
         
         // 保存相片的标识
         __block NSString *assetId = nil;
@@ -217,7 +216,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
             PHAsset *asset = [PHAsset fetchAssetsWithLocalIdentifiers:@[assetId] options:nil].lastObject;
             // 拿到自定义的相册对象
 
-            PHAssetCollection *collection = _collections[_correctAlbumIndex];
+            PHAssetCollection *collection = _collections[_currentAlbumIndex];
 
             [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
                 [[PHAssetCollectionChangeRequest changeRequestForAssetCollection:collection] addAssets:@[asset]];
