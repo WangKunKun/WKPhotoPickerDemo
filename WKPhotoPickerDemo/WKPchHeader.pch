@@ -23,12 +23,9 @@
 #define is_iPhone6plus (SCREEN_WIDTH > 375)
 
 #import "UIViewExt.h"
-//#import "UIViewController+selectedImages.h"
 #import "UIImage+WKScreenshots.h"
 #import "UIImage+WKAssetID.h"
 
-#pragma warning 单一模式 - 1 Or  多相册模式 - 0
 
-#define WKSingleModel 0
 
 #endif /* WKPchHeader_pch */
