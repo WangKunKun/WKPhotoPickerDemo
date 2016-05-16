@@ -137,7 +137,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
     return [arr copy];
 }
 
-- (void)refreshDataWithBlock:(WKPhotoBlock)block
+- (void)refreshDataWithBlock:(WKPhotoRefreshDataBlock)block
 {
 #pragma warning 异步处理
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -152,13 +152,14 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
             //不允许网络加载
             imageRequest_Option.networkAccessAllowed=NO;
             imageRequest_Option.synchronous=YES;
-            
-            
+//            NSLog(@"%@",asset.localIdentifier);
+        
             [_imageManager requestImageForAsset:asset targetSize:_imageSize contentMode:_contentModel options:imageRequest_Option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                 static NSUInteger i = 1;
                 
                 
                 if (result != nil) {
+                    result.wk_assetID = asset.localIdentifier;
                     NSString * key = [NSString stringWithFormat:@"%lu",i];
                     NSMutableDictionary * dict = [NSMutableDictionary dictionary];
                     [dict setObject:result forKey:key];
@@ -185,7 +186,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
 
 
 
-- (void)saveImage:(UIImage *)image
+- (void)saveImage:(UIImage *)image  completion:(WKPhotoSaveImageBlock)block
 {
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     if (status == PHAuthorizationStatusDenied)
@@ -214,16 +215,24 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
             
             // 根据标识获得相片对象
             PHAsset *asset = [PHAsset fetchAssetsWithLocalIdentifiers:@[assetId] options:nil].lastObject;
+            
+            NSLog(@"唯一标识：%@",assetId);
+            NSLog(@"asset标识：%@",asset.localIdentifier);
+            image.wk_assetID = assetId;
+            
             // 拿到自定义的相册对象
 
             PHAssetCollection *collection = _collections[_currentAlbumIndex];
-
+            //保存到地自定义相册
             [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
                 [[PHAssetCollectionChangeRequest changeRequestForAssetCollection:collection] addAssets:@[asset]];
                 
             } completionHandler:^(BOOL success, NSError * _Nullable error) {
                 if (success) {
                     NSLog(@"保存成功");
+                    
+                    block(image);
+                    
                 } else {
                     NSLog(@"自定义相册 保存失败：%@", error);
                 }

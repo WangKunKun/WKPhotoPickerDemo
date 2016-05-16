@@ -54,6 +54,7 @@
 		43B31BFE1CE5C84A007A3955 /* WKPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B31BFD1CE5C84A007A3955 /* WKPhotoManager.m */; };
 		43B31C041CE5EAA9007A3955 /* WKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B31C031CE5EAA9007A3955 /* WKImagePickerController.m */; };
 		43B31C071CE5EB5A007A3955 /* UIImage+WKScreenshots.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B31C061CE5EB5A007A3955 /* UIImage+WKScreenshots.m */; };
+		43BB8AEB1CE9B3F500A9FC59 /* UIImage+WKAssetID.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BB8AEA1CE9B3F500A9FC59 /* UIImage+WKAssetID.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,8 @@
 		43B31C031CE5EAA9007A3955 /* WKImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKImagePickerController.m; sourceTree = "<group>"; };
 		43B31C051CE5EB5A007A3955 /* UIImage+WKScreenshots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WKScreenshots.h"; sourceTree = "<group>"; };
 		43B31C061CE5EB5A007A3955 /* UIImage+WKScreenshots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WKScreenshots.m"; sourceTree = "<group>"; };
+		43BB8AE91CE9B3F500A9FC59 /* UIImage+WKAssetID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WKAssetID.h"; sourceTree = "<group>"; };
+		43BB8AEA1CE9B3F500A9FC59 /* UIImage+WKAssetID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WKAssetID.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 			children = (
 				43B31C051CE5EB5A007A3955 /* UIImage+WKScreenshots.h */,
 				43B31C061CE5EB5A007A3955 /* UIImage+WKScreenshots.m */,
+				43BB8AE91CE9B3F500A9FC59 /* UIImage+WKAssetID.h */,
+				43BB8AEA1CE9B3F500A9FC59 /* UIImage+WKAssetID.m */,
 				4325AE681CE4925A009866D9 /* UIViewExt.h */,
 				4325AE691CE4925A009866D9 /* UIViewExt.m */,
 				43B31BFC1CE5C84A007A3955 /* WKPhotoManager.h */,
@@ -483,6 +488,7 @@
 				4325AE7D1CE4925A009866D9 /* WKPhotoPickerViewController.m in Sources */,
 				4325AE851CE4925A009866D9 /* WKWatermarkCameraView.m in Sources */,
 				18C5C2271CE7E08F002B5AD7 /* WKPhotoBrowseVC.m in Sources */,
+				43BB8AEB1CE9B3F500A9FC59 /* UIImage+WKAssetID.m in Sources */,
 				4325AE3C1CE48CFD009866D9 /* ViewController.m in Sources */,
 				4325AE391CE48CFD009866D9 /* AppDelegate.m in Sources */,
 				4325AEB41CE4977F009866D9 /* WKPhotoCollectionViewCell.m in Sources */,

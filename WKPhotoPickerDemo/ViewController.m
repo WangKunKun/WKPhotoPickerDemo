@@ -18,13 +18,9 @@
 
 @property (nonatomic, strong) WKImageSelectedScrollView * scrollView;
 
-@property (nonatomic, strong) NSMutableArray * waitingActionImages;
-
-@property (nonatomic, assign) NSUInteger presentAlbumIndex;
-
 @property (nonatomic, strong) NSMutableArray * selectedImages;
 
-
+@property (nonatomic, assign) NSUInteger presentImageIndex;
 
 @end
 
@@ -37,12 +33,11 @@
 
     _selectedImages = [NSMutableArray array];
     
-    _waitingActionImages = [NSMutableArray array];
     _scrollView = [[WKImageSelectedScrollView alloc] initWithImages:nil frame:CGRectMake(0, 200, SCREEN_WIDTH, 200)];
     [self.view addSubview:_scrollView];
     _scrollView.wkDelegate = self;
     
-    _presentAlbumIndex = 0;
+    _presentImageIndex = 0;
 }
 
 
@@ -88,22 +83,14 @@
     switch (style) {
         case WKSelectImageViewBtnClick_Delete:
         {
-            [_waitingActionImages removeObjectAtIndex:index];
             [self.selectedImages removeObjectAtIndex:index];
         }
             break;
         case WKSelectImageViewBtnClick_Add:
         {
             
-            //单一模式
-#if WKSingleModel
-            WKPhotoPickerViewController * vc = [[WKPhotoPickerViewController alloc] init];
-            //            vc.selectedImages = self.selectedImages;
-            vc.wkDelegate = self;
-            [self presentViewController:vc animated:YES completion:nil];
-#else//多相册模式  多相册模式不具备跨相册多选功能 —— 后续会增加
             [self selectPhotoAlbum];
-#endif
+
             
             
         }
@@ -111,11 +98,10 @@
         case WKSelectImageViewBtnClick_Look:
         {
             
-//            if (_waitingActionImages.count > 0) {
-                WKPhotoBrowseVC * pbvc = [[WKPhotoBrowseVC alloc] init];
-                pbvc.wkDelegate = self;
-                [self presentViewController:pbvc animated:YES completion:nil];
-//            }
+            _presentImageIndex = index;
+            WKPhotoBrowseVC * pbvc = [[WKPhotoBrowseVC alloc] init];
+            pbvc.wkDelegate = self;
+            [self presentViewController:pbvc animated:YES completion:nil];
 
         }
             break;
@@ -126,88 +112,72 @@
 }
 #pragma mark WKPhotoPickerVCDelegate
 //选择完成 代理
-- (void)chooseToComplete:(NSMutableArray<NSDictionary *> *)images
+- (void)chooseToComplete:(NSMutableArray<UIImage *> *)images
 {
 
-#if WKSingleModel
     self.selectedImages = images;
-#endif
-    if (self.selectedImages) {
-        [_waitingActionImages removeAllObjects];
-        for (NSDictionary * dict in self.selectedImages) {
-            [_waitingActionImages addObjectsFromArray:[dict allValues]];
-        }
-        
-        _scrollView.images = self.waitingActionImages ;
-    }
+    _scrollView.images = images;
+
 }
 //最大选择数量
 - (NSUInteger)numberOfSelectMax
 {
-#if WKSingleModel
-    return 9;
-#else
-    return 9 - self.selectedImages.count;
-#endif
+
+    return 9 ;
+
 
 }
 //已经选择图片 包含key 和 image  不支持跨相册
-- (NSMutableArray<NSDictionary *> *)imagesOfSelected
+- (NSMutableArray<UIImage *> *)imagesOfSelected
 {
     //多相册模式下
-    
-#if WKSingleModel
     return self.selectedImages;
-#else
-    return nil;
-#endif
-    
 }
 
 // 选择中代理 包含新增加的值和被删除的值
 - (void)changeToChooseWithDict:(NSDictionary *)dict
 {
     NSLog(@"%@",dict);
-#if WKSingleModel
 
-#else
     NSArray * keys = [dict allKeys];
-    NSDictionary * oldDict = nil;
-    NSDictionary * newDict = nil;
+    UIImage * deleteImage = nil;
+    UIImage * addImage = nil;
     for (NSString * key in keys) {
         if ([key isEqualToString:@"0"]) {
-            oldDict = [dict objectForKey:key];
+            deleteImage = [dict objectForKey:key];
         }
         else if([key isEqualToString:@"1"])
         {
-            newDict = [dict objectForKey:@"1"];
+            addImage = [dict objectForKey:@"1"];
         }
     }
-    [self.selectedImages removeObject:oldDict];
+    [self.selectedImages removeObject:deleteImage];
     
     //过滤同一图片 无法过滤 除非重写UIImage
-    UIImage * image = [newDict allValues][0];
-    BOOL isExist = NO;
-    for (NSDictionary * dict in self.selectedImages) {
-        UIImage * thisImage = [dict allValues][0];
-        if ([image isEqual:thisImage]) {
-            isExist = YES;
+
+    for (UIImage * tempImage in self.selectedImages) {
+        if ([tempImage wk_isEqualToImage:addImage]) {
             return;
         }
     }
-    if (newDict != nil) {
-        [self.selectedImages addObject:newDict];
-    }
-#endif
+    
+    if(addImage)
+        [self.selectedImages addObject:addImage];
+//#endif
     
 }
 
+#pragma mark WKPhotoBrowserVCDelegate methods
+
 - (NSArray<UIImage *> *)imagesOfSource
 {
-    return _waitingActionImages;
+    return _selectedImages;
 }
 
-
+- (NSUInteger)currentIndexOfImages
+{
+    return _presentImageIndex;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

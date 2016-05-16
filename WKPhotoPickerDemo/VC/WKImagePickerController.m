@@ -91,14 +91,16 @@
                 break;
             case 2://使用照片
             {
-                [[WKPhotoManager sharedPhotoManager] saveImage:image];
-
-                [weakSelf dismissViewControllerAnimated:YES completion:^{
-                    //图片要传回去用代理
-                    if (weakSelf.wkImagePickerDelegate && [weakSelf.wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
-                        [weakSelf.wkImagePickerDelegate takePhoto:image];
-                    }
+                [[WKPhotoManager sharedPhotoManager] saveImage:image completion:^(UIImage *image) {
+                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+                        //图片要传回去用代理
+                        if (weakSelf.wkImagePickerDelegate && [weakSelf.wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+                            [weakSelf.wkImagePickerDelegate takePhoto:image];
+                        }
+                    }];
                 }];
+
+
             }
 
                 break;
@@ -145,14 +147,16 @@
     }
     else
     {
-        [[WKPhotoManager sharedPhotoManager] saveImage:temp];
-
-        [self dismissViewControllerAnimated:YES completion:^{
-            //图片要传回去用代理
-            if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
-                [_wkImagePickerDelegate takePhoto:temp];
-            }
+        [[WKPhotoManager sharedPhotoManager] saveImage:temp completion:^(UIImage *image) {
+            [self dismissViewControllerAnimated:YES completion:^{
+                //图片要传回去用代理
+                if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+                    [_wkImagePickerDelegate takePhoto:temp];
+                }
+            }];
         }];
+
+
 
         
     }

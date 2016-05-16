@@ -20,10 +20,10 @@ typedef enum : NSUInteger {
 
 @required
 //选择完成 代理
-- (void)chooseToComplete:(NSMutableArray<NSDictionary *> *)images;
+- (void)chooseToComplete:(NSMutableArray<UIImage *> *)images;
 
 //已经选择图片 包含key 和 image  不支持跨相册
-- (NSMutableArray<NSDictionary *> *)imagesOfSelected;
+- (NSMutableArray<UIImage *> *)imagesOfSelected;
 @optional
 
 //最大选择数量-默认为9

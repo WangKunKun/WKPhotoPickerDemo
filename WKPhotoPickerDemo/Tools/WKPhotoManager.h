@@ -15,7 +15,8 @@ typedef enum : NSUInteger {
     
 } WKPhotoContentModel;
 
-typedef void(^WKPhotoBlock)(NSArray<UIImage *> * sourceImages);
+typedef void(^WKPhotoRefreshDataBlock)(NSArray<UIImage *> * sourceImages);
+typedef void(^WKPhotoSaveImageBlock)(UIImage * image);
 
 @interface WKPhotoManager : NSObject
 
@@ -37,9 +38,9 @@ typedef void(^WKPhotoBlock)(NSArray<UIImage *> * sourceImages);
 - (NSArray<UIImage *> *)getSourceImage;//获得原图
 
 
-- (void)saveImage:(UIImage *)image;
+- (void)saveImage:(UIImage *)image completion:(WKPhotoSaveImageBlock)block;
 //实时数据需刷新
-- (void)refreshDataWithBlock:(WKPhotoBlock)block;
+- (void)refreshDataWithBlock:(WKPhotoRefreshDataBlock)block;
 
 @end
 

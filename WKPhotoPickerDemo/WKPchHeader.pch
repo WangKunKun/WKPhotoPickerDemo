@@ -25,7 +25,7 @@
 #import "UIViewExt.h"
 //#import "UIViewController+selectedImages.h"
 #import "UIImage+WKScreenshots.h"
-
+#import "UIImage+WKAssetID.h"
 
 #pragma warning 单一模式 - 1 Or  多相册模式 - 0
 

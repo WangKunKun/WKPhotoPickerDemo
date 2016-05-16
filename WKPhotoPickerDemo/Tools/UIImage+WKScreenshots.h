@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface UIImage (WKScreenshots)
+
+
 
 
 + (UIImage *)getTargetViewScreenShotImageWithView:(UIView *)TargetView;//得到UIKit层面截图

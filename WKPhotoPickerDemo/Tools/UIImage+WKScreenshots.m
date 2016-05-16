@@ -9,7 +9,6 @@
 #import "UIImage+WKScreenshots.h"
 
 #import <OpenGLES/ES1/glext.h>
-
 @implementation UIImage (WKScreenshots)
 
 

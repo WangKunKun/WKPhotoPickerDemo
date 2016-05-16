@@ -46,9 +46,9 @@
         _images = [[_wkDelegate imagesOfSource] mutableCopy];
     }
     
-    self.currentIndex = 1;
+    self.currentIndex = 0;
     
-
+    self.view.backgroundColor = [UIColor blackColor];
     
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(currentIndexOfImages)]) {
         self.currentIndex  = [_wkDelegate currentIndexOfImages];
