@@ -78,8 +78,8 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
     _albumNames = [_albumNamesM copy];
 
     if (_hasWKAlbum == NO) {
+        static NSUInteger i = 0;
         [self creatWKAlbum];
-        [self initAllPhotoData];
     }
     
 }
@@ -98,7 +98,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
         if ([collection isKindOfClass:[PHAssetCollection class]])
         {
             PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
-            NSLog(@"%@",assetCollection.localizedTitle);
+//            NSLog(@"%@",assetCollection.localizedTitle);
             
             if ([assetCollection.localizedTitle isEqualToString:WKAlbumName]) {
                 _hasWKAlbum = YES;
@@ -247,11 +247,13 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
     //新建相册
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
         
-        [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:WKAlbumName];
+       id a =  [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:WKAlbumName];
+        NSLog(@"%@",a);
     } completionHandler:^(BOOL success, NSError * _Nullable error) {
         if (success) {
             NSLog(@"创建成功");
             _hasWKAlbum = YES;
+            [self initAllPhotoData];
         }
         else
         {

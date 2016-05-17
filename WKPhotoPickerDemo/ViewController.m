@@ -38,6 +38,8 @@
     _scrollView.wkDelegate = self;
     
     _presentImageIndex = 0;
+    //预先初始化 必要
+    [WKPhotoManager sharedPhotoManager];
 }
 
 
