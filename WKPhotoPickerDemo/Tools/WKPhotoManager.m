@@ -177,10 +177,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
     });
 }
 
-- (NSArray<NSDictionary *> *)getPhotoForKV
-{
-    return [_imageDicts copy];
-}
+
 
 
 

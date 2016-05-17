@@ -68,19 +68,19 @@
     
     [tap requireGestureRecognizerToFail:longpress];
     
-    CGFloat startX = 0;
+    CGFloat startX = 10;
     CGFloat startY = 0;
     
     NSUInteger i = 0;
     for (UIImage * image in _images) {
-        UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectMake(startX, startY, SCREEN_WIDTH, _scrollView.heightS)];
+        UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectMake(startX, startY, SCREEN_WIDTH - 20, _scrollView.heightS)];
         iv.contentMode = UIViewContentModeScaleAspectFit;
         iv.image = image;
         [self.scrollView addSubview:iv];
         iv.userInteractionEnabled = YES;
 
 
-        startX += SCREEN_WIDTH;
+        startX += SCREEN_WIDTH ;
         i++;
     }
     _scrollView.contentSize = CGSizeMake(startX, _scrollView.heightS);
