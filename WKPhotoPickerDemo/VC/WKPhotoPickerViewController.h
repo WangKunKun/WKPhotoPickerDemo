@@ -15,14 +15,12 @@ typedef enum : NSUInteger {
 } WKPhotoPickerVCState;
 
 @protocol WKPhotoPickerViewControllerDelegate <NSObject>
-#pragma warning 多相册模式下 请使用changeToChooseWithDict 改变图片
-#pragma warning 单一模式则两者均可
+
 
 @required
 //选择完成 代理
 - (void)chooseToComplete:(NSMutableArray<UIImage *> *)images;
 
-//已经选择图片 包含key 和 image  不支持跨相册
 - (NSMutableArray<UIImage *> *)imagesOfSelected;
 @optional
 

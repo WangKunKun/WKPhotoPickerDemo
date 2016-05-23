@@ -78,7 +78,6 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
     _albumNames = [_albumNamesM copy];
 
     if (_hasWKAlbum == NO) {
-        static NSUInteger i = 0;
         [self creatWKAlbum];
     }
     
@@ -153,7 +152,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
             imageRequest_Option.networkAccessAllowed=NO;
             imageRequest_Option.synchronous=YES;
 //            NSLog(@"%@",asset.localIdentifier);
-        
+        //运用枚举类对应
             [_imageManager requestImageForAsset:asset targetSize:_imageSize contentMode:_contentModel options:imageRequest_Option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                 static NSUInteger i = 1;
                 
@@ -181,7 +180,7 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
 
 
 
-
+//保存图片
 
 - (void)saveImage:(UIImage *)image  completion:(WKPhotoSaveImageBlock)block
 {

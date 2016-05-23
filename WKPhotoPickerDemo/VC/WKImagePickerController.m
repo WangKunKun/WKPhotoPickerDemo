@@ -13,8 +13,9 @@
 
 @interface WKImagePickerController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
-@property (nonatomic, strong) WKWatermarkCameraView * watermarkCameraView;
-@property (nonatomic, strong) WKCaptureImageView * captureView;
+@property (nonatomic, strong) WKWatermarkCameraView * watermarkCameraView;    //拍照+水印view
+
+@property (nonatomic, strong) WKCaptureImageView * captureView;//拍照结束后view
 
 
 @end
@@ -48,6 +49,7 @@
     
 }
 
+//水印相机模式
 - (void)initWatermarkModel
 {
     _watermarkCameraView = [WKWatermarkCameraView viewFromNIB];
@@ -91,19 +93,8 @@
                 break;
             case 2://使用照片
             {
-                dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
                 
-                [[WKPhotoManager sharedPhotoManager] saveImage:image completion:^(UIImage *image) {
-                    dispatch_semaphore_signal(semaphore);
-                }];
-                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
-                [weakSelf dismissViewControllerAnimated:YES completion:^{
-                    //图片要传回去用代理
-                    if (weakSelf.wkImagePickerDelegate && [weakSelf.wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
-                        [weakSelf.wkImagePickerDelegate takePhoto:image];
-                    }
-                }];
+                [weakSelf saveImageAndMiss:image];
             }
 
                 break;
@@ -116,6 +107,7 @@
     
         self.cameraOverlayView=_watermarkCameraView;
 }
+
 
 - (void)setModel:(WKImagePickerControllerModel)model
 {
@@ -143,30 +135,35 @@
 {
     
     UIImage * temp = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //水印模式
     if (self.model == WKImagePickerControllerModel_WaterMark) {
         _captureView.mainImage =  [info objectForKey:UIImagePickerControllerOriginalImage];
         _captureView.watemarkImage = _watermarkCameraView.saveImage;
         [self.view addSubview:_captureView];
     }
-    else
+    else//正常模式
     {
-        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-
-        [[WKPhotoManager sharedPhotoManager] saveImage:temp completion:^(UIImage *image) {
-            dispatch_semaphore_signal(semaphore);
-        }];
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        [self dismissViewControllerAnimated:YES completion:^{
-            //图片要传回去用代理
-            if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
-                [_wkImagePickerDelegate takePhoto:temp];
-            }
-        }];
+        [self saveImageAndMiss:temp];
 
         
     }
+}
+
+- (void)saveImageAndMiss:(UIImage *)image
+{
+    //用信号量表示
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
-    
+    [[WKPhotoManager sharedPhotoManager] saveImage:image completion:^(UIImage *image) {
+        dispatch_semaphore_signal(semaphore);
+    }];
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    [self dismissViewControllerAnimated:YES completion:^{
+        //图片要传回去用代理
+        if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+            [_wkImagePickerDelegate takePhoto:image];
+        }
+    }];
 }
 /*
 #pragma mark - Navigation

@@ -10,12 +10,14 @@
 #import <Photos/Photos.h>
 
 typedef enum : NSUInteger {
-    WKPhotoContentModel_Fit = 0,
-    WKPhotoContentModel_Fill,
+    WKPhotoContentModel_Fit = 0,//图片显示模式
+    WKPhotoContentModel_Fill,//图片显示模式
     
 } WKPhotoContentModel;
 
+//block，获取源数据
 typedef void(^WKPhotoRefreshDataBlock)(NSArray<UIImage *> * sourceImages);
+//保存图片
 typedef void(^WKPhotoSaveImageBlock)(UIImage * image);
 
 @interface WKPhotoManager : NSObject

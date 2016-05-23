@@ -10,11 +10,11 @@
 
 @interface UIImage (WKAssetID)
 
-//图片标识符
+//图片标识符——从系统获取 一定是唯一
 @property (nonatomic, strong) NSString * wk_assetID;
-//索引下标
+//索引下标，选择图片时需使用
 @property (nonatomic, strong) NSString * wk_index;
-
+//判断图片是否相等
 - (BOOL)wk_isEqualToImage:(UIImage *)image;
 
 @end

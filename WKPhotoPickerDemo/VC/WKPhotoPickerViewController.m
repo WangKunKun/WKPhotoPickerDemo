@@ -84,11 +84,12 @@
     [self.view addSubview:_collectionView];
 
     
-    
+    //调用代理赋值
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(numberOfSelectMax)]) {
         _maxImageCount = [_wkDelegate numberOfSelectMax];
     }
     
+    //调用代理赋值
     if (_wkDelegate && [_wkDelegate respondsToSelector:@selector(imagesOfSelected)]) {
         _selectedImages = [[_wkDelegate imagesOfSelected] mutableCopy];
     }
@@ -98,7 +99,7 @@
     
     _hintLabel.text = [NSString stringWithFormat:@"已选择%lu/%lu张图片",(unsigned long)self.selectedImages.count,_maxImageCount];
 
-    
+    //读取相册数据
     [[WKPhotoManager sharedPhotoManager] refreshDataWithBlock:^(NSArray<UIImage *> *sourceImages) {
         self.sourceImages = sourceImages;
         [_collectionView reloadData];
@@ -166,7 +167,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 
-
+    //加1 是因为有一个拍照选项
     return _sourceImages.count + 1;
 }
 
@@ -198,10 +199,11 @@
 
 -(void)selectCameraModel
 {
-    
+    //获得设备参数
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    //判断是否是模拟器 是则返回
     if(([deviceString isEqualToString:@"i386"] ||  [deviceString isEqualToString:@"x86_64"]))
     {
         NSLog(@"对不起模拟器不支持相机功能，请用真机测试");
@@ -210,8 +212,7 @@
     
     UIAlertController * sheetAlertController = [UIAlertController alertControllerWithTitle:@"请选择打开方式" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction * defaultCamera =[UIAlertAction actionWithTitle:@"系统相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
-        //提前初始化 免得卡
+//不太好优化
         _cameraController = [[WKImagePickerController alloc]initWithModel:WKImagePickerControllerModel_Default];
         _cameraController.wkImagePickerDelegate = self;
         [self presentViewController:_cameraController animated:YES completion:nil];
@@ -238,8 +239,8 @@
 {
     NSMutableDictionary * delegateDict = [NSMutableDictionary dictionary];
 
-    //超过则先移除
-    if (self.selectedImages.count >= 9) {
+    //超过数量则先移除
+    if (self.selectedImages.count >= _maxImageCount) {
         [delegateDict setValue:self.selectedImages[0] forKey:@"0"];
 
         [self.selectedImages removeObjectAtIndex:0];
@@ -271,7 +272,7 @@
     }
     else
     {
-//        
+        //cell
         WKPhotoCollectionViewCell * cell = (WKPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
         NSUInteger index = indexPath.row ;
         
