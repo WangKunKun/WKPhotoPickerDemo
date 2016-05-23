@@ -106,6 +106,8 @@
     
    
     self.view.backgroundColor = [UIColor whiteColor];
+    
+
 
 }
 
@@ -208,6 +210,8 @@
     
     UIAlertController * sheetAlertController = [UIAlertController alertControllerWithTitle:@"请选择打开方式" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction * defaultCamera =[UIAlertAction actionWithTitle:@"系统相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        //提前初始化 免得卡
         _cameraController = [[WKImagePickerController alloc]initWithModel:WKImagePickerControllerModel_Default];
         _cameraController.wkImagePickerDelegate = self;
         [self presentViewController:_cameraController animated:YES completion:nil];

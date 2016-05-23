@@ -91,16 +91,19 @@
                 break;
             case 2://使用照片
             {
+                dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+                
                 [[WKPhotoManager sharedPhotoManager] saveImage:image completion:^(UIImage *image) {
-                    [weakSelf dismissViewControllerAnimated:YES completion:^{
-                        //图片要传回去用代理
-                        if (weakSelf.wkImagePickerDelegate && [weakSelf.wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
-                            [weakSelf.wkImagePickerDelegate takePhoto:image];
-                        }
-                    }];
+                    dispatch_semaphore_signal(semaphore);
                 }];
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 
-
+                [weakSelf dismissViewControllerAnimated:YES completion:^{
+                    //图片要传回去用代理
+                    if (weakSelf.wkImagePickerDelegate && [weakSelf.wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+                        [weakSelf.wkImagePickerDelegate takePhoto:image];
+                    }
+                }];
             }
 
                 break;
@@ -147,16 +150,18 @@
     }
     else
     {
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
         [[WKPhotoManager sharedPhotoManager] saveImage:temp completion:^(UIImage *image) {
-            [self dismissViewControllerAnimated:YES completion:^{
-                //图片要传回去用代理
-                if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
-                    [_wkImagePickerDelegate takePhoto:temp];
-                }
-            }];
+            dispatch_semaphore_signal(semaphore);
         }];
-
-
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        [self dismissViewControllerAnimated:YES completion:^{
+            //图片要传回去用代理
+            if (_wkImagePickerDelegate && [_wkImagePickerDelegate respondsToSelector:@selector(takePhoto:)]) {
+                [_wkImagePickerDelegate takePhoto:temp];
+            }
+        }];
 
         
     }

@@ -14,7 +14,7 @@
 @required
 
 
-//已经选择图片 包含key 和 image  不支持跨相册
+//已经选择图片 包含key 和 image
 - (NSArray<UIImage *> *)imagesOfSource;
 
 @optional
