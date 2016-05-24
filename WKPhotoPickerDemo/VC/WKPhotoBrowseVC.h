@@ -12,16 +12,10 @@
 
 
 @required
-
-
 //已经选择图片 包含key 和 image
 - (NSArray<UIImage *> *)imagesOfSource;
-
 @optional
-
 - (NSUInteger)currentIndexOfImages;
-
-
 @end
 
 @interface WKPhotoBrowseVC : UIViewController

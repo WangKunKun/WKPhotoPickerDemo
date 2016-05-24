@@ -74,7 +74,6 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
     [self.albums addObject:allPhotos];
     [self.albumNamesM addObject:@"所有照片"];
     [self getalbumResultWithType:PHAssetCollectionTypeAlbum];
-//    [self getalbumResultWithType:PHAssetCollectionTypeSmartAlbum];
     _albumNames = [_albumNamesM copy];
 
     if (_hasWKAlbum == NO) {

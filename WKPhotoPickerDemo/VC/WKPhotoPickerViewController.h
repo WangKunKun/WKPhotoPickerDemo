@@ -16,18 +16,16 @@ typedef enum : NSUInteger {
 
 @protocol WKPhotoPickerViewControllerDelegate <NSObject>
 
-
 @required
 //选择完成 代理
 - (void)chooseToComplete:(NSMutableArray<UIImage *> *)images;
-
+//已选中的图片
 - (NSMutableArray<UIImage *> *)imagesOfSelected;
 @optional
-
 //最大选择数量-默认为9
 - (NSUInteger)numberOfSelectMax;
 
-// 选择中代理 包含新增加的值和被删除的值
+// 选择中代理 包含新增加的值和被删除的值  key 0 表删除掉得 key 1表新添加的
 - (void)changeToChooseWithDict:(NSDictionary *)dict;
 
 @end

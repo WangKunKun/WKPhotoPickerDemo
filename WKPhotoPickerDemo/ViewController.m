@@ -7,14 +7,16 @@
 //
 
 #import "ViewController.h"
-#import "WKImageSelectedScrollView.h"
-#import "WKPhotoPickerViewController.h"
 #import "WKPhotoManager.h"
+
+
+#import "WKPhotoPickerViewController.h"
+
+#import "WKImageSelectedScrollView.h"
+
 #import "WKPhotoBrowseVC.h"
 
-
-
-@interface ViewController ()<WKImageSelectedScrollViewDelegate,WKPhotoPickerViewControllerDelegate,WKPhotoBrowseVCDelegate>
+@interface ViewController ()<WKPhotoBrowseVCDelegate,WKImageSelectedScrollViewDelegate,WKPhotoPickerViewControllerDelegate>
 
 @property (nonatomic, strong) WKImageSelectedScrollView * scrollView;
 
@@ -49,9 +51,8 @@
 }
 
 
-#pragma warning 需求未用，因为要保留选择的图片的key，如果区分不同相册 保留太过繁琐，而且无法避免选择重复图片（因为拍照的新图片） 只能做到两次选择不同相册就不传，并且在返回时，如果为未选中任何图片，也不传回来。
 
-#pragma mark 多相册模式 不具备 跨相册多选照片功能！
+
 - (void)selectPhotoAlbum
 {
     WKPhotoManager * pm = [WKPhotoManager sharedPhotoManager];
@@ -83,28 +84,22 @@
 - (void)wkScrollView:(WKImageSelectedScrollView *)wkScrollView DidClickAtIndex:(NSUInteger)index clickStyle:(WKSelectImageViewBtnClickStyle)style
 {
     switch (style) {
-        case WKSelectImageViewBtnClick_Delete:
+        case WKSelectImageViewBtnClick_Delete://删除
         {
             [self.selectedImages removeObjectAtIndex:index];
         }
             break;
-        case WKSelectImageViewBtnClick_Add:
+        case WKSelectImageViewBtnClick_Add://添加
         {
-            
             [self selectPhotoAlbum];
-
-            
-            
         }
             break;
-        case WKSelectImageViewBtnClick_Look:
+        case WKSelectImageViewBtnClick_Look://查看
         {
-            
             _presentImageIndex = index;
             WKPhotoBrowseVC * pbvc = [[WKPhotoBrowseVC alloc] init];
             pbvc.wkDelegate = self;
             [self presentViewController:pbvc animated:YES completion:nil];
-
         }
             break;
             
@@ -124,22 +119,16 @@
 //最大选择数量
 - (NSUInteger)numberOfSelectMax
 {
-
     return 9 ;
-
-
 }
-//已经选择图片 包含key 和 image  不支持跨相册
 - (NSMutableArray<UIImage *> *)imagesOfSelected
 {
-    //多相册模式下
     return self.selectedImages;
 }
 
 // 选择中代理 包含新增加的值和被删除的值
 - (void)changeToChooseWithDict:(NSDictionary *)dict
 {
-    NSLog(@"%@",dict);
 
     NSArray * keys = [dict allKeys];
     UIImage * deleteImage = nil;
@@ -154,28 +143,24 @@
         }
     }
     [self.selectedImages removeObject:deleteImage];
-    
-    //过滤同一图片 无法过滤 除非重写UIImage
 
     for (UIImage * tempImage in self.selectedImages) {
         if ([tempImage wk_isEqualToImage:addImage]) {
             return;
         }
     }
-    
     if(addImage)
         [self.selectedImages addObject:addImage];
-//#endif
-    
 }
 
 #pragma mark WKPhotoBrowserVCDelegate methods
 
+//图片源
 - (NSArray<UIImage *> *)imagesOfSource
 {
     return _selectedImages;
 }
-
+//当前显示的图片下标
 - (NSUInteger)currentIndexOfImages
 {
     return _presentImageIndex;

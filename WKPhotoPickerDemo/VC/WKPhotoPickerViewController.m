@@ -9,15 +9,15 @@
 
 
 #import "WKPhotoPickerViewController.h"
-#import "WKImagePickerController.h"
 #import "WKPhotoCollectionViewCell.h"
 #import "WKPhotoManager.h"
 #import "sys/utsname.h"
 #import "WKNavView.h"
 
 
+#import "WKImagePickerController.h"
 
-@interface WKPhotoPickerViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIImagePickerControllerDelegate,UINavigationControllerDelegate,WKNavViewDelegate,WKImagePickerControllerDelegate>
+@interface WKPhotoPickerViewController ()<WKImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIImagePickerControllerDelegate,UINavigationControllerDelegate,WKNavViewDelegate>
 @property (strong, nonatomic)  UICollectionView *collectionView;
 
 @property (strong, nonatomic)  WKImagePickerController *cameraController;//相机控制器
@@ -246,10 +246,7 @@
         [self.selectedImages removeObjectAtIndex:0];
 
     }
-
-    
     //添加
-
     [self.selectedImages addObject:image];
     [delegateDict setValue:image forKey:@"1"];
 
