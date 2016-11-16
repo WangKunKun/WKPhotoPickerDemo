@@ -201,7 +201,15 @@ static NSString * WKAlbumName = @"WKPhotoPickerDemo";
         
         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
             // 保存相片到相机胶卷，并返回标识
-            assetId = [PHAssetCreationRequest creationRequestForAssetFromImage:image].placeholderForCreatedAsset.localIdentifier;
+            CGFloat ver = [UIDevice currentDevice].systemVersion.floatValue;
+            if (ver >= 9)
+            {
+                assetId = [PHAssetCreationRequest creationRequestForAssetFromImage:image].placeholderForCreatedAsset.localIdentifier;
+            }
+            else
+            {
+                assetId = [PHAssetChangeRequest creationRequestForAssetFromImage:image].placeholderForCreatedAsset.localIdentifier;
+            }
         } completionHandler:^(BOOL success, NSError * _Nullable error) {
             if (!success) {
                 NSLog(@"系统相册 保存失败：%@", error);
